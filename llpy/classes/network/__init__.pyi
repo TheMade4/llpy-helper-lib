@@ -6,101 +6,98 @@ from llpy.types import T_HttpGetResp
 
 from .wsclient import WSClient
 
+
 class network:
-    """网络接口 API"""
+    """Network Interface API"""
 
     def __init__(self) -> NoReturn: ...
+
     @overload
     @staticmethod
     def httpGet(url: str, callback: Callable[[int, str], Any]) -> bool:
         """
-        发送一个异步 HTTP(s) Get 请求
+        Send an asynchronous HTTP(s) GET request.
 
         Callback Args:
-            status (int): 返回的 HTTP(s) 响应码，如200代表请求成功。如果请求执行失败，`status` 值将为 `-1`
-            result (str): 返回的具体数据
+            status (int): HTTP(s) response code returned. For example, 200 for a successful request.
+                          If the request execution fails, the `status` value will be `-1`.
+            result (str): Specific data returned.
 
         Args:
-            url: 请求的目标地址（包括 Get 请求附带的参数）
-            callback: 当请求返回时执行的回调函数，用于回传 HTTP(s) 响应结果
+            url: Target address of the request (including parameters for GET requests).
+            callback: Callback function to be executed when the request returns, used to pass back the HTTP(s) response result.
 
         Returns:
-            是否成功发送请求
+            Whether the request was successfully sent.
         """
+
     @overload
     @staticmethod
-    def httpGet(
-        url: str,
-        header: dict[str, str],
-        callback: Callable[[int, str], Any],
-    ) -> bool:
+    def httpGet(url: str, header: dict[str, str], callback: Callable[[int, str], Any]) -> bool:
         """
-        发送一个异步 HTTP(s) Get 请求
+        Send an asynchronous HTTP(s) GET request.
 
         Callback Args:
-            status (int): 返回的 HTTP(s) 响应码，如200代表请求成功。如果请求执行失败，`status` 值将为 `-1`
-            result (str): 返回的具体数据
+            status (int): HTTP(s) response code returned. For example, 200 for a successful request.
+                          If the request execution fails, the `status` value will be `-1`.
+            result (str): Specific data returned.
 
         Args:
-            url: 请求的目标地址（包括 Get 请求附带的参数）
-            header: 请求头（包括 Get 请求 Request header）
-            callback: 当请求返回时执行的回调函数，用于回传 HTTP(s) 响应结果
+            url: Target address of the request (including parameters for GET requests).
+            header: Request headers (including Request headers for GET requests).
+            callback: Callback function to be executed when the request returns, used to pass back the HTTP(s) response result.
 
         Returns:
-            是否成功发送请求
+            Whether the request was successfully sent.
         """
+
     @overload
     @staticmethod
-    def httpPost(
-        url: str,
-        data: str,
-        post_type: str,
-        callback: Callable[[int, str], Any],
-    ) -> bool:
+    def httpPost(url: str, data: str, post_type: str, callback: Callable[[int, str], Any]) -> bool:
         """
-        发送一个异步 HTTP(s) Post 请求
+        Send an asynchronous HTTP(s) POST request.
 
         Callback Args:
-            status (int): 返回的 HTTP(s) 响应码，如200代表请求成功。如果请求执行失败，`status` 值将为 `-1`
-            result (str): 返回的具体数据
+            status (int): HTTP(s) response code returned. For example, 200 for a successful request.
+                          If the request execution fails, the `status` value will be `-1`.
+            result (str): Specific data returned.
 
         Args:
-            url: 请求的目标地址
-            data: 发送的数据
-            post_type: 发送的 Post 数据类型，形如 `text/plain` `application/x-www-form-urlencoded` 等
-            callback: 当请求返回时执行的回调函数，用于回传 HTTP(s) 响应结果
+            url: Target address of the request.
+            data: Data to be sent.
+            post_type: Type of Post data to be sent, such as `text/plain` `application/x-www-form-urlencoded`, etc.
+            callback: Callback function to be executed when the request returns, used to pass back the HTTP(s) response result.
 
         Returns:
-            是否成功发送请求
+            Whether the request was successfully sent.
         """
+
     @overload
     @staticmethod
-    def httpPost(
-        url: str,
-        header: dict[str, str],
-        data: str,
-        post_type: str,
-        callback: Callable[[int, str], Any],
-    ) -> bool:
+    def httpPost(url: str, header: dict[str, str], data: str, post_type: str,
+                 callback: Callable[[int, str], Any]) -> bool:
         """
-        发送一个异步 HTTP(s) Post 请求
+        Send an asynchronous HTTP(s) POST request.
 
         Callback Args:
-            status (int): 返回的 HTTP(s) 响应码，如200代表请求成功。如果请求执行失败，`status` 值将为 `-1`
-            result (str): 返回的具体数据
+            status (int): HTTP(s) response code returned. For example, 200 for a successful request.
+                          If the request execution fails, the `status` value will be `-1`.
+            result (str): Specific data returned.
 
         Args:
-            url: 请求的目标地址
-            header: 请求头（包括 Post 请求 Request header）
-            data: 发送的数据
-            post_type: 发送的 Post 数据类型，形如 `text/plain` `application/x-www-form-urlencoded` 等
-            callback: 当请求返回时执行的回调函数，用于回传 HTTP(s) 响应结果
+            url: Target address of the request.
+            header: Request headers (including Request headers for POST requests).
+            data: Data to be sent.
+            post_type: Type of Post data to be sent, such as `text/plain` `application/x-www-form-urlencoded`, etc.
+            callback: Callback function to be executed when the request returns, used to pass back the HTTP(s) response result.
 
         Returns:
-            是否成功发送请求
+            Whether the request was successfully sent.
         """
+
     @staticmethod
     def httpGetSync(url: str) -> T_HttpGetResp: ...
-    @deprecated("请使用 `WSClient()`")
+
+    @deprecated("Please use `WSClient()`")
     @staticmethod
     def newWebSocket() -> WSClient: ...

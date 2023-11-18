@@ -4,235 +4,260 @@ from llpy import FloatPos, NativePointer
 from llpy.classes.nbt.compound import NbtCompound
 
 class LLSE_Packet:
-    """数据包对象"""
+    """Packet Object"""
 
     def __init__(self) -> NoReturn: ...
+
     def asPointer(self) -> NativePointer: ...
     def getName(self) -> str: ...
     def getId(self) -> int: ...
 
+
 Packet = LLSE_Packet
 
 class BinaryStream:
-    """二进制流对象"""
+    """Binary Stream Object"""
 
     def __init__(self) -> None:
-        """创建一个二进制流对象"""
+        """Create a binary stream object"""
+
     def reset(self) -> bool:
         """
-        重置二进制流
+        Reset the binary stream
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def reserve(self, size: int) -> bool:
         """
-        给二进制流分配空间
+        Allocate space for the binary stream
 
         Args:
-            size: 分配的字节数
+            size: Number of bytes to allocate
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeBool(self, value: bool) -> bool:
         """
-        向二进制流写入 布尔值
+        Write a boolean value to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeByte(self, value: int) -> bool:
         """
-        向二进制流写入 字节
+        Write a byte to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeDouble(self, value: float) -> bool:
         """
-        向二进制流写入 双精度浮点
+        Write a double-precision floating-point number to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeFloat(self, value: float) -> bool:
         """
-        向二进制流写入 单精度浮点
+        Write a single-precision floating-point number to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeSignedBigEndianInt(self, value: int) -> bool:
         """
-        向二进制流写入 大端格式 有符号 整数
+        Write a big-endian signed integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeSignedInt(self, value: int) -> bool:
         """
-        向二进制流写入 有符号 整数
+        Write a signed integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeSignedInt64(self, value: int) -> bool:
         """
-        向二进制流写入 有符号 长整数
+        Write a signed 64-bit integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeSignedShort(self, value: int) -> bool:
         """
-        向二进制流写入 有符号 短整数
+        Write a signed short integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeString(self, value: str) -> bool:
         """
-        向二进制流写入 字符串
+        Write a string to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeUnsignedChar(self, value: int) -> bool:
         """
-        向二进制流写入 无符号 字符
+        Write an unsigned char to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeUnsignedInt(self, value: int) -> bool:
         """
-        向二进制流写入 无符号 整数
+        Write an unsigned integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeUnsignedInt64(self, value: int) -> bool:
         """
-        向二进制流写入 无符号 长整数
+        Write an unsigned 64-bit integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeUnsignedShort(self, value: int) -> bool:
         """
-        向二进制流写入 无符号 短整数
+        Write an unsigned short integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeUnsignedVarInt(self, value: int) -> bool:
         """
-        向二进制流写入 无符号 变长 整数
+        Write an unsigned variable-length integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeUnsignedVarInt64(self, value: int) -> bool:
         """
-        向二进制流写入 无符号 变长 长整数
+        Write an unsigned variable-length 64-bit integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeVarInt(self, value: int) -> bool:
         """
-        向二进制流写入 变长 整数
+        Write a variable-length integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeVarInt64(self, value: int) -> bool:
         """
-        向二进制流写入 变长 长整数
+        Write a variable-length 64-bit integer to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeVec3(self, value: FloatPos) -> bool:
         """
-        向二进制流写入 三维向量（坐标）
+        Write a three-dimensional vector (coordinates) to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def writeCompoundTag(self, value: NbtCompound) -> bool:
         """
-        向二进制流写入 NBT 标签
+        Write an NBT tag to the binary stream
 
         Args:
-            value: 写入的数据
+            value: Data to write
 
         Returns:
-            是否成功
+            Whether successful
         """
+
     def createPacket(self, pkt_id: int) -> LLSE_Packet:
         """
-        通过二进制流构建数据包
+        Build a packet from the binary stream
 
         Args:
-            pkt_id: 数据包 ID
+            pkt_id: Packet ID
 
         Returns:
-            数据包对象
+            Packet object
         """
+
     def getData(self) -> str: ...

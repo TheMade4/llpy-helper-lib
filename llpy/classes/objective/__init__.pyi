@@ -4,99 +4,113 @@ from llpy import LLSE_Player
 
 from .types import T_ScoreDisplaySlot, T_ScoreSortOrder
 
+
 class LLSE_Objective:
-    """计分项对象"""
+    """Score Objective Object"""
 
     def __init__(self) -> NoReturn: ...
+
     @property
     def name(self) -> str:
-        """计分项名称"""
+        """Score objective name"""
+
     @property
     def displayName(self) -> str:
-        """计分项的显示名称"""
+        """Display name of the score objective"""
+
     def setDisplay(
-        self,
-        slot: T_ScoreDisplaySlot,
-        sort_order: T_ScoreSortOrder = 0,
+            self,
+            slot: T_ScoreDisplaySlot,
+            sort_order: T_ScoreSortOrder = 0,
     ) -> bool:
         """
-        设置计分项的显示状态
+        Set the display status of the score objective
 
         Args:
-            slot: 显示槽位名称字符串
-            sort_order: 排序方式
+            slot: Display slot name string
+            sort_order: Sorting order
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def setScore(self, target: LLSE_Player | str, score: int) -> int | None:
         """
-        设置某个目标的分数
+        Set the score for a specific target
 
-        注意：若计分项不存在，则会尝试创建计分项，此时会返回 `0` (当 `target` 为 `str` 时) 或 `None` (当 `target` 为 `LLSE_Player` 时)
+        Note: If the score objective does not exist, it will attempt to create it.
+        In this case, it will return `0` (when `target` is a `str`) or `None` (when `target` is an `LLSE_Player`).
 
-        原因参见：[#971](https://github.com/LiteLDev/LiteLoaderBDS/issues/971#issuecomment-1385047649)
+        See: [#971](https://github.com/LiteLDev/LiteLoaderBDS/issues/971#issuecomment-1385047649)
 
         Args:
-            target: 计分项跟踪的目标，可传入玩家对象或者任意字符串
-            score: 要设置的分数
+            target: The target tracked by the score objective, can be a player object or any string
+            score: The score to set
 
         Returns:
-            如果返回 `None`，则代表操作失败
+            If `None` is returned, the operation failed
         """
+
     def addScore(self, target: LLSE_Player | str, score: int) -> int | None:
         """
-        增加某个目标的分数
+        Increase the score for a specific target
 
-        注意：若计分项不存在，则会尝试创建计分项，此时会返回 `0` (当 `target` 为 `str` 时) 或 `None` (当 `target` 为 `LLSE_Player` 时)
+        Note: If the score objective does not exist, it will attempt to create it.
+        In this case, it will return `0` (when `target` is a `str`) or `None` (when `target` is an `LLSE_Player`).
 
-        原因参见：[#971](https://github.com/LiteLDev/LiteLoaderBDS/issues/971#issuecomment-1385047649)
+        See: [#971](https://github.com/LiteLDev/LiteLoaderBDS/issues/971#issuecomment-1385047649)
 
         Args:
-            target: 计分项跟踪的目标，可传入玩家对象或者任意字符串
-            score: 要增加的分数
+            target: The target tracked by the score objective, can be a player object or any string
+            score: The score to increase
 
         Returns:
-            如果返回 `None`，则代表操作失败
+            If `None` is returned, the operation failed
         """
+
     def reduceScore(self, target: LLSE_Player | str, score: int) -> int | None:
         """
-        减少某个目标的分数
+        Decrease the score for a specific target
 
-        注意：若计分项不存在，则会尝试创建计分项，此时会返回 `0` (当 `target` 为 `str` 时) 或 `None` (当 `target` 为 `LLSE_Player` 时)
+        Note: If the score objective does not exist, it will attempt to create it.
+        In this case, it will return `0` (when `target` is a `str`) or `None` (when `target` is an `LLSE_Player`).
 
-        原因参见：[#971](https://github.com/LiteLDev/LiteLoaderBDS/issues/971#issuecomment-1385047649)
+        See: [#971](https://github.com/LiteLDev/LiteLoaderBDS/issues/971#issuecomment-1385047649)
 
         Args:
-            target: 计分项跟踪的目标，可传入玩家对象或者任意字符串
-            score: 要减少的分数
+            target: The target tracked by the score objective, can be a player object or any string
+            score: The score to decrease
 
         Returns:
-            如果返回 `None`，则代表操作失败
+            If `None` is returned, the operation failed
         """
+
     def deleteScore(self, target: LLSE_Player | str) -> bool:
         """
-        停止跟踪某个目标
+        Stop tracking a specific target
 
-        停止跟踪将直接删除这个目标对应的计分项数值，下次如需要访问需要再次创建
+        Stopping tracking will directly delete the score value corresponding to this target.
+        Accessing it again will require recreating it.
 
         Args:
-            target: 计分项跟踪的目标，可传入玩家对象或者任意字符串
+            target: The target tracked by the score objective, can be a player object or any string
 
         Returns:
-            是否停止成功
+            Whether stopping was successful
         """
+
     def getScore(self, target: LLSE_Player | str) -> int:
         """
-        获取跟踪的某个目标的分数
+        Get the score for a specific tracked target
 
-        使用前请保证计分项存在
+        Make sure the score objective exists before using
 
         Args:
-            target: 待查询的跟踪目标，可传入玩家对象或者任意字符串
+            target: The target to query, can be a player object or any string
 
         Returns:
-            该目标 / 玩家在此计分项中的分数
+            The score of the target/player in this score objective
         """
+
 
 Objective = LLSE_Objective

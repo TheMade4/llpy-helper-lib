@@ -1,20 +1,19 @@
 from typing import TypedDict
 
-
 class T_TimeObj(TypedDict):
-    """`system.getTimeObj()` 获取到的时间对象"""
+    """Time object obtained from `system.getTimeObj()`"""
 
     Y: int
-    """年份数值（4位）"""
+    """Year value (4 digits)"""
     M: int
-    """月份数值"""
+    """Month value"""
     D: int
-    """天数数值"""
+    """Day value"""
     h: int
-    """小时数值（24小时制）"""
+    """Hour value (24-hour format)"""
     m: int
-    """分钟数值"""
+    """Minute value"""
     s: int
-    """秒数值"""
+    """Second value"""
     ms: int
-    """毫秒数值"""
+    """Millisecond value"""

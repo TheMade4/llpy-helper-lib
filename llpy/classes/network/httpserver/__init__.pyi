@@ -4,195 +4,207 @@ from ..types import (
     T_HTTPServerPreRoutingListener,
 )
 
+
 class HttpServer:
-    """HTTP 服务端对象"""
+    """HTTP Server Object"""
 
     def __init__(self) -> None:
-        """创建一个新的服务器对象"""
+        """Create a new server object"""
+
     def onGet(self, path: str, callback: T_HTTPServerListener) -> HttpServer:
         """
-        监听 GET 请求
+        Listen for GET requests
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数
+            path: Request path, starting with `/`, may include regular expressions. Example: `/test/(.+)`. If multiple paths match the regular expression, the first defined path is chosen.
+            callback: Callback function
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def onPut(self, path: str, callback: T_HTTPServerListener) -> HttpServer:
         """
-        监听 PUT 请求
+        Listen for PUT requests
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数
+            path: Request path, starting with `/`, may include regular expressions. Example: `/test/(.+)`. If multiple paths match the regular expression, the first defined path is chosen.
+            callback: Callback function
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def onPost(self, path: str, callback: T_HTTPServerListener) -> HttpServer:
         """
-        监听 POST 请求
+        Listen for POST requests
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数
+            path: Request path, starting with `/`, may include regular expressions. Example: `/test/(.+)`. If multiple paths match the regular expression, the first defined path is chosen.
+            callback: Callback function
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def onPatch(self, path: str, callback: T_HTTPServerListener) -> HttpServer:
         """
-        监听 PATCH 请求
+        Listen for PATCH requests
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数
+            path: Request path, starting with `/`, may include regular expressions. Example: `/test/(.+)`. If multiple paths match the regular expression, the first defined path is chosen.
+            callback: Callback function
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def onDelete(self, path: str, callback: T_HTTPServerListener) -> HttpServer:
         """
-        监听 DELETE 请求
+        Listen for DELETE requests
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数
+            path: Request path, starting with `/`, may include regular expressions. Example: `/test/(.+)`. If multiple paths match the regular expression, the first defined path is chosen.
+            callback: Callback function
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def onOptions(self, path: str, callback: T_HTTPServerListener) -> HttpServer:
         """
-        监听 OPTIONS 请求
+        Listen for OPTIONS requests
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数
+            path: Request path, starting with `/`, may include regular expressions. Example: `/test/(.+)`. If multiple paths match the regular expression, the first defined path is chosen.
+            callback: Callback function
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def onPreRouting(self, callback: T_HTTPServerPreRoutingListener) -> HttpServer:
         """
-        监听 PreRouting 预路由事件
+        Listen for PreRouting pre-routing events
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象。在回调函数中可以修改响应
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object. Can modify the response in the callback function
 
         Callback Returns:
-            如果返回 `False`，则不会继续路由至对应路径的回调函数 (但仍然会触发 `PostRouting` 事件)。
+            If `False` is returned, routing to the corresponding callback function for the path will not continue (but the `PostRouting` event will still be triggered).
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数，在收到请求时调用。
+            callback: Callback function, called when a request is received.
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def onPostRouting(self, callback: T_HTTPServerListener) -> HttpServer:
         """
-        监听 PostRouting 后路由事件
+        Listen for PostRouting post-routing events
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象。在回调函数中可以修改响应
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object. Can modify the response in the callback function
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数，在对应目录的回调函数 (或 `PreRouting` 事件) 执行完毕后调用
+            callback: Callback function, called after the callback function for the corresponding directory (or the `PreRouting` event) has completed
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def onError(self, callback: T_HTTPServerListener) -> HttpServer:
         """
-        监听 Error 错误事件
+        Listen for Error error events
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数，在在错误 (状态码 >= `400`) 时调用
+            callback: Callback function, called when an error (status code >= `400`) occurs
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def onException(self, callback: T_HTTPServerExceptionListener) -> HttpServer:
         """
-        监听 Error 错误事件
+        Listen for Error error events
 
         Callback Args:
-            request (HttpRequest): HTTP 请求对象
-            response (HttpResponse): HTTP 响应对象。在回调函数中可以修改响应
-            exception (str): 异常信息
+            request (HttpRequest): HTTP request object
+            response (HttpResponse): HTTP response object. Can modify the response in the callback function
+            exception (str): Exception information
 
         Args:
-            path: 请求路径，以 `/` 开头，可以包含正则表达式。如: `/test/(.+)`。如果有多个路径同时满足正则表达式，则选择先定义的路径。
-            callback: 回调函数，在 `handler` 中有抛出异常时调用
+            callback: Callback function, called when an exception is thrown in the `handler`
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def listen(self, addr: str, port: int) -> HttpServer:
         """
-        监听端口并开启服务器
+        Listen on a port and start the server
 
         Args:
-            addr: 监听地址，可以是 IP 地址或域名
-            port: 监听端口
+            addr: Listening address, can be an IP address or domain name
+            port: Listening port
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def startAt(self, addr: str, port: int) -> HttpServer:
         """
-        监听端口并开启服务器
+        Listen on a port and start the server
 
         Args:
-            addr: 监听地址，可以是 IP 地址或域名
-            port: 监听端口
+            addr: Listening address, can be an IP address or domain name
+            port: Listening port
 
         Returns:
-            处理完毕的服务器对象（便于连锁进行其他操作）
+            Server object after processing (for chaining other operations)
         """
+
     def stop(self) -> None:
-        """停止服务器"""
+        """Stop the server"""
+
     def close(self) -> None:
-        """停止服务器"""
+        """Stop the server"""
+
     def isRunning(self) -> bool:
         """
-        获取服务器是否正在运行
+        Get whether the server is running
 
         Returns:
-            服务器正在运行与否
+            Whether the server is running or not
         """

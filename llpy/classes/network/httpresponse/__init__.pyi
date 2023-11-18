@@ -1,54 +1,63 @@
 from typing import Any, NoReturn
 
+
 class HttpResponse:
-    """HTTP 响应对象"""
+    """HTTP Response Object"""
 
     def __init__(self) -> NoReturn: ...
+
     @property
     def headers(self) -> dict[str, list[str]]:
-        """响应头"""
+        """Response headers"""
+
     @property
     def status(self) -> int:
-        """响应状态码"""
+        """Response status code"""
+
     @property
     def body(self) -> str:
-        """响应内容"""
+        """Response content"""
+
     @property
     def version(self) -> str:
-        """响应版本"""
+        """Response version"""
+
     @property
     def reason(self) -> str:
-        """错误原因"""
+        """Error reason"""
+
     def getHeader(self, name: str) -> list[str]:
         """
-        获取指定响应头的值
+        Get the value of the specified response header
 
         Args:
-            name: 响应头名称
+            name: Response header name
 
         Returns:
-            响应头的值数组 (如果没有该响应头，则返回空数组)
+            Array of values for the response header (an empty array if the header is not present)
         """
+
     def setHeader(self, name: str, value: Any) -> HttpResponse:
         """
-        设置指定响应头的值
+        Set the value of the specified response header
 
         Args:
-            name: 响应头名称
-            value: 响应头值
+            name: Response header name
+            value: Response header value
 
         Returns:
-            处理完毕的响应对象
+            Processed response object
         """
+
     def write(self, *args: Any) -> HttpResponse:
         """
-        写入响应内容
+        Write response content
 
-        注：本函数在目前相当于 `res.body += arg1 + arg2 + ...`
+        Note: This function currently functions as `res.body += arg1 + arg2 + ...`
 
         Args:
-            *args: 响应内容
+            *args: Response content
 
         Returns:
-            处理完毕的响应对象
+            Processed response object
         """

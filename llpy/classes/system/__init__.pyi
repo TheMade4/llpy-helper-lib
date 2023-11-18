@@ -2,79 +2,92 @@ from typing import Any, Callable, NoReturn
 
 from llpy.types import T_TimeObj
 
+
 class system:
-    """系统调用 API"""
+    """System call API"""
 
     def __init__(self) -> NoReturn: ...
+
     @staticmethod
     def getTimeStr() -> str:
         """
-        获取当前时间字符串
+        Get the current time as a string
 
         Returns:
-            当前的时间字符串，使用当地时区和24小时制。形如 `2021-04-03 19:15:01`
+            Current time as a string, using the local timezone and 24-hour format.
+            Format example: `2021-04-03 19:15:01`
         """
+
     @staticmethod
     def getTimeObj() -> T_TimeObj:
         """
-        获取当前的时间对象
+        Get the current time object
 
         Returns:
-            当前的时间对象
+            Current time object
         """
+
     @staticmethod
     def randomGuid() -> str:
         """
-        随机生成一个 GUID 字符串
+        Generate a random GUID string
 
         Returns:
-            一个随机生成的唯一标识符GUID
+            A randomly generated unique identifier (GUID)
         """
+
     @staticmethod
     def cmd(
-        cmd: str,
-        callback: Callable[[int, str], Any],
-        time_limit: int = -1,
+            cmd: str,
+            callback: Callable[[int, str], Any],
+            time_limit: int = -1,
     ) -> bool:
         """
-        调用 shell 执行指定系统命令
+        Call the shell to execute a specific system command
 
-        注意！这里执行的不是 MC 命令系统的命令
+        Note! This executes commands outside of the Minecraft command system.
 
-        此函数异步工作，不会等待系统执行完命令后再返回，而是由引擎自动调用给出的回调函数来返回结果
+        This function works asynchronously, it does not wait for the system to complete the command
+        before returning. Instead, the engine automatically calls the provided callback function
+        to return the results.
 
         Callback Args:
-            exitcode (int): shell 退出码
-            output (str): 标准输出和标准错误输出的内容
+            exitcode (int): Shell exit code
+            output (str): Content of standard output and standard error output
 
         Args:
-            cmd: 执行的系统命令
-            callback: shell 进程结束之后返回数据使用的回调函数
-            time_limit: 命令运行的最长时限，单位为毫秒。默认为 `-1`，即不限制运行时间
+            cmd: The system command to execute
+            callback: Callback function used to return data after the shell process ends
+            time_limit: Maximum time limit for command execution, in milliseconds.
+                        Default is `-1`, meaning no time limit.
 
         Returns:
-            是否成功启动命令
+            Whether the command was successfully launched
         """
+
     @staticmethod
     def newProcess(
-        process: str,
-        callback: Callable[[int, str], Any],
-        time_limit: int = -1,
+            process: str,
+            callback: Callable[[int, str], Any],
+            time_limit: int = -1,
     ) -> bool:
         """
-        运行指定位置程序
+        Run a specified program at a given location
 
-        此函数异步工作，不会等待系统执行完命令后再返回，而是由引擎自动调用给出的回调函数来返回结果
+        This function works asynchronously, it does not wait for the system to complete the command
+        before returning. Instead, the engine automatically calls the provided callback function
+        to return the results.
 
         Callback Args:
-            exitcode (int): 程序进程退出码
-            output (str): 程序标准输出和标准错误输出的内容
+            exitcode (int): Exit code of the program process
+            output (str): Content of standard output and standard error output of the program
 
         Args:
-            process: 运行的程序路径（与命令行参数）
-            callback: 程序进程结束之后返回数据使用的回调函数
-            time_limit: 程序进程运行的最长时限，单位为毫秒。默认为 `-1`，即不限制运行时间
+            process: Path to the program to run (along with command line arguments)
+            callback: Callback function used to return data after the program process ends
+            time_limit: Maximum time limit for program process execution, in milliseconds.
+                        Default is `-1`, meaning no time limit.
 
         Returns:
-            是否成功启动进程
+            Whether the program was successfully launched
         """

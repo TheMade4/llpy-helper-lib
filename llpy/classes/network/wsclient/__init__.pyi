@@ -7,161 +7,173 @@ from ..types import (
     T_WSClientStatusOpen,
 )
 
+
 class WSClient:
-    """WebSocket 客户端对象 API"""
+    """WebSocket client object API"""
 
     Open: T_WSClientStatusOpen
-    """连接状态枚举 | 处于正常连接中"""
+    """Connection status enumeration | Currently in a normal connection"""
     Closing: T_WSClientStatusClosing
-    """连接状态枚举 | 正在断开连接"""
+    """Connection status enumeration | Disconnecting"""
     Closed: T_WSClientStatusClosed
-    """连接状态枚举 | 未连接"""
+    """Connection status enumeration | Not connected"""
 
     def __init__(self) -> None:
-        """创建一个新的 WebSocket 客户端对象"""
+        """Create a new WebSocket client object"""
+
     @property
     def status(self) -> T_WSClientStatus:
-        """当前的连接状态（`WSClient.Open` / `WSClient.Closing` / `WSClient.Closed`）"""
+        """Current connection status (`WSClient.Open` / `WSClient.Closing` / `WSClient.Closed`)"""
+
     def connect(self, target: str) -> bool:
         """
-        创建连接
+        Establish a connection
 
         Args:
-            target: 要连接的目标地址，形如 `ws://hostname[:port][/path/path][?query=value]`
+            target: Target address to connect to, in the form of `ws://hostname[:port][/path/path][?query=value]`
 
         Returns:
-            是否成功连接
+            Whether the connection was successful
         """
+
     def connectAsync(self, target: str, callback: Callable[[bool], Any]) -> bool:
         """
-        异步创建连接
+        Asynchronously establish a connection
 
         Callback Args:
-            success (bool): WebSocket 连接是否成功
+            success (bool): Whether the WebSocket connection was successful
 
         Args:
-            target: 要连接的目标地址，形如 `ws://hostname[:port][/path/path][?query=value]`
-            callback: 当连接成功或者失败时执行的回调函数
+            target: Target address to connect to, in the form of `ws://hostname[:port][/path/path][?query=value]`
+            callback: Callback function to execute when the connection succeeds or fails
 
         Returns:
-            是否成功开始尝试连接
+            Whether the connection attempt was successful
         """
+
     def send(self, msg: str | bytearray) -> bool:
         """
-        发送文本 / 二进制消息
+        Send text/binary messages
 
-        如果传入的参数类型是 `str`，会按照文本发送，如果是 `bytearray` 将按照二进制数据发送
+        If the parameter type is `str`, it will be sent as text; if it is `bytearray`, it will be sent as binary data
 
         Args:
-            msg: 要发送的文本 / 二进制数据
+            msg: Text/binary data to be sent
 
         Returns:
-            是否成功发送
+            Whether the sending was successful
         """
+
     @overload
     def listen(
-        self,
-        event: Literal["onTextReceived"],
-        callback: Callable[[str], Any],
+            self,
+            event: Literal["onTextReceived"],
+            callback: Callable[[str], Any],
     ) -> bool:
         """
-        监听 WebSocket 事件
+        Listen for WebSocket events
 
-        收到文本消息 监听
+        Listen for text message reception
 
         Callback Args:
-            msg (str): 收到的文本消息
+            msg (str): Received text message
 
         Args:
-            event: 要监听的事件名
-            callback: 注册的监听函数
+            event: Event name to listen for
+            callback: Registered callback function
 
         Returns:
-            是否成功监听事件
+            Whether the event listening was successful
         """
+
     @overload
     def listen(
-        self,
-        event: Literal["onBinaryReceived"],
-        callback: Callable[[bytearray], Any],
+            self,
+            event: Literal["onBinaryReceived"],
+            callback: Callable[[bytearray], Any],
     ) -> bool:
         """
-        监听 WebSocket 事件
+        Listen for WebSocket events
 
-        收到二进制消息 监听
+        Listen for binary message reception
 
         Callback Args:
-            data (bytearray): 收到的二进制消息
+            data (bytearray): Received binary message
 
         Args:
-            event: 要监听的事件名
-            callback: 注册的监听函数
+            event: Event name to listen for
+            callback: Registered callback function
 
         Returns:
-            是否成功监听事件
+            Whether the event listening was successful
         """
+
     @overload
     def listen(self, event: Literal["onError"], callback: Callable[[str], Any]) -> bool:
         """
-        监听 WebSocket 事件
+        Listen for WebSocket events
 
-        发生错误 监听
+        Listen for error occurrence
 
         Callback Args:
-            msg (str): 错误的提示信息
+            msg (str): Error message
 
         Args:
-            event: 要监听的事件名
-            callback: 注册的监听函数
+            event: Event name to listen for
+            callback: Registered callback function
 
         Returns:
-            是否成功监听事件
+            Whether the event listening was successful
         """
+
     @overload
     def listen(
-        self,
-        event: Literal["onLostConnection"],
-        callback: Callable[[int], Any],
+            self,
+            event: Literal["onLostConnection"],
+            callback: Callable[[int], Any],
     ) -> bool:
         """
-        监听 WebSocket 事件
+        Listen for WebSocket events
 
-        连接丢失 监听
+        Listen for connection loss
 
         Callback Args:
-            code (int): 错误码
+            code (int): Error code
 
         Args:
-            event: 要监听的事件名
-            callback: 注册的监听函数
+            event: Event name to listen for
+            callback: Registered callback function
 
         Returns:
-            是否成功监听事件
+            Whether the event listening was successful
         """
+
     def close(self) -> bool:
         """
-        关闭连接
+        Close the connection
 
-        在处于关闭状态时，请勿继续使用此客户端对象！
+        Do not continue using this client object when it is in the closed state!
 
         Returns:
-            是否成功关闭连接
+            Whether the connection was successfully closed
         """
+
     def shutdown(self) -> bool:
         """
-        强制断开连接
+        Forcefully disconnect the connection
 
-        在处于关闭状态时，请勿继续使用此客户端对象！
+        Do not continue using this client object when it is in the closed state!
 
         Returns:
-            是否成功断开连接
+            Whether the connection was successfully disconnected
         """
+
     def errorCode(self) -> int:
         """
-        获取错误码
+        Get the error code
 
-        如果在上述接口使用中遇到了失败，可以从这里获取上一个错误码
+        If a failure occurs in the above interfaces, you can retrieve the last error code from here
 
         Returns:
-            上一次错误产生的错误码
-        """
+            The error code generated by the last error
+        ```

@@ -1,50 +1,62 @@
 from typing import NoReturn
 
+
 class HttpRequest:
-    """HTTP 请求对象"""
+    """HTTP Request Object"""
 
     def __init__(self) -> NoReturn: ...
+
     @property
     def headers(self) -> dict[str, list[str]]:
-        """请求头"""
+        """Request headers"""
+
     @property
     def method(self) -> str:
-        """请求方法"""
+        """Request method"""
+
     @property
     def body(self) -> str:
-        """请求内容"""
+        """Request content"""
+
     @property
     def path(self) -> str:
-        """请求路径"""
+        """Request path"""
+
     @property
     def params(self) -> dict[str, str | list[str]]:
-        """请求查询参数"""
+        """Request query parameters"""
+
     @property
     def query(self) -> dict[str, str | list[str]]:
-        """请求查询参数"""
+        """Request query parameters"""
+
     @property
     def remoteAddr(self) -> str:
-        """请求源地址"""
+        """Request source address"""
+
     @property
     def remotePort(self) -> int:
-        """请求源端口"""
+        """Request source port"""
+
     @property
     def version(self) -> str:
-        """请求版本"""
+        """Request version"""
+
     @property
     def matches(self) -> list[str]:
         """
-        请求路径正则匹配结果
+        Request path regex matching results
 
-        第一个元素 (`[0]`) 为原始文本，其后面的元素才是匹配结果
+        The first element (`[0]`) is the original text, and subsequent elements are the matching results.
         """
+
     def getHeader(self, name: str) -> list[str]:
         """
-        获取指定请求头的值
+        Get the value of the specified request header
 
         Args:
-            name: 请求头名称
+            name: Request header name
 
         Returns:
-            请求头的值数组 (如果没有该请求头，则返回空数组)
+            Array of values for the request header (returns an empty array if the header is not present)
         """

@@ -32,1775 +32,1997 @@ from .types import (
     T_TitlePacketType,
 )
 
+
 class LLSE_Player:
-    """玩家对象"""
+    """Player object"""
 
     def __init__(self) -> NoReturn: ...
+
     @property
     def name(self) -> str:
-        """玩家名"""
+        """Player name"""
+
     @property
     def pos(self) -> FloatPos:
-        """玩家视角高度坐标"""
+        """Player's perspective height coordinates"""
+
     @property
     def feetPos(self) -> FloatPos:
-        """玩家腿部所在坐标（游戏内显示的方块坐标）"""
+        """Player's leg position coordinates (coordinates displayed in the game)"""
+
     @property
     def blockPos(self) -> IntPos:
-        """玩家所在的方块坐标"""
+        """Player's block coordinates"""
+
     @property
     def lastDeathPos(self) -> IntPos:
-        """玩家上次死亡的坐标"""
+        """Coordinates of the player's last death"""
+
     @property
     def realName(self) -> str:
-        """玩家的真实名字"""
+        """Player's real name"""
+
     @property
     def xuid(self) -> str:
-        """玩家 XUID 字符串"""
+        """Player's XUID string"""
+
     @property
     def uuid(self) -> str:
-        """玩家 UUID 字符串"""
+        """Player's UUID string"""
+
     @property
     def permLevel(self) -> T_PermLevel:
-        """玩家的操作权限等级"""
+        """Player's operational permission level"""
+
     @property
     def gameMode(self) -> T_GameMode:
-        """玩家的游戏模式"""
+        """Player's game mode"""
+
     @property
     def canSleep(self) -> bool:
-        """玩家是否可以睡觉"""
+        """Whether the player can sleep"""
+
     @property
     def canFly(self) -> bool:
-        """玩家是否可以飞行"""
+        """Whether the player can fly"""
+
     @property
     def canBeSeenOnMap(self) -> bool:
-        """玩家是否可以在地图上看到"""
+        """Whether the player can be seen on the map"""
+
     @property
     def canFreeze(self) -> bool:
-        """玩家是否可以冻结"""
+        """Whether the player can be frozen"""
+
     @property
     def canSeeDaylight(self) -> bool:
-        """玩家是否能看到日光"""
+        """Whether the player can see daylight"""
+
     @property
     def canShowNameTag(self) -> bool:
-        """玩家是否可以显示姓名标签"""
+        """Whether the player can show a name tag"""
+
     @property
     def canStartSleepInBed(self) -> bool:
-        """玩家是否可以开始在床上睡觉"""
+        """Whether the player can start sleeping in a bed"""
+
     @property
     def canPickupItems(self) -> bool:
-        """玩家是否可以拾取物品"""
+        """Whether the player can pick up items"""
+
     @property
     def maxHealth(self) -> int:
-        """玩家最大生命值"""
+        """Player's maximum health"""
+
     @property
     def health(self) -> int:
-        """玩家当前生命值"""
+        """Player's current health"""
+
     @property
     def inAir(self) -> bool:
-        """玩家当前是否悬空"""
+        """Whether the player is currently airborne"""
+
     @property
     def inWater(self) -> bool:
-        """玩家当前是否在水中"""
+        """Whether the player is currently in water"""
+
     @property
     def inLava(self) -> bool:
-        """玩家是否在熔岩中"""
+        """Whether the player is in lava"""
+
     @property
     def inRain(self) -> bool:
-        """玩家是否在淋雨"""
+        """Whether the player is in the rain"""
+
     @property
     def inSnow(self) -> bool:
-        """玩家是否在雪中"""
+        """Whether the player is in snow"""
+
     @property
     def inWall(self) -> bool:
-        """玩家是否在墙上"""
+        """Whether the player is on a wall"""
+
     @property
     def inWaterOrRain(self) -> bool:
-        """玩家是否在水中或雨中"""
+        """Whether the player is in water or rain"""
+
     @property
     def inWorld(self) -> bool:
-        """玩家是否在世界内"""
+        """Whether the player is in the world"""
+
     @property
     def inClouds(self) -> bool:
-        """玩家是否在云层上"""
+        """Whether the player is above the clouds"""
+
     @property
     def speed(self) -> float:
-        """玩家当前速度"""
+        """Player's current speed"""
+
     @property
     def direction(self) -> DirectionAngle:
-        """玩家当前朝向"""
+        """Player's current direction"""
+
     @property
     def uniqueId(self) -> str:
-        """玩家（实体的）唯一标识符"""
+        """Unique identifier for the player (entity)"""
+
     @property
     def langCode(self) -> str:
-        """玩家设置的语言的标识符(形如 `zh_CN`)"""
+        """Identifier for the language set by the player (e.g., `zh_CN`)"""
+
     @property
     def isLoading(self) -> bool:
-        """玩家是否正在加载"""
+        """Whether the player is currently loading"""
+
     @property
     def isInvisible(self) -> bool:
-        """玩家是否隐身中"""
+        """Whether the player is currently invisible"""
+
     @property
     def isInsidePortal(self) -> bool:
-        """玩家是否在传送门中"""
+        """Whether the player is inside a portal"""
+
     @property
     def isHurt(self) -> bool:
-        """玩家是否受伤"""
+        """Whether the player is hurt"""
+
     @property
     def isTrusting(self) -> bool:
-        """玩家是否受信任"""
+        """Whether the player is trusted"""
+
     @property
     def isTouchingDamageBlock(self) -> bool:
-        """玩家是否在能造成伤害的方块上"""
+        """Whether the player is on a block that can cause damage"""
+
     @property
     def isHungry(self) -> bool:
-        """玩家是否饿了"""
+        """Whether the player is hungry"""
+
     @property
     def isOnFire(self) -> bool:
-        """玩家是否着火"""
+        """Whether the player is on fire"""
+
     @property
     def isOnGround(self) -> bool:
-        """玩家是否在地上"""
+        """Whether the player is on the ground"""
+
     @property
     def isOnHotBlock(self) -> bool:
-        """玩家是否在高温方块上（岩浆等）"""
+        """Whether the player is on a hot block (e.g., lava)"""
+
     @property
     def isTrading(self) -> bool:
-        """玩家是否在交易"""
+        """Whether the player is trading"""
+
     @property
     def isAdventure(self) -> bool:
-        """玩家是否是冒险模式"""
+        """Whether the player is in adventure mode"""
+
     @property
     def isGliding(self) -> bool:
-        """玩家是否在滑行"""
+        """Whether the player is gliding"""
+
     @property
     def isSurvival(self) -> bool:
-        """玩家是否是生存模式"""
+        """Whether the player is in survival mode"""
+
     @property
     def isSpectator(self) -> bool:
-        """玩家是否是旁观模式"""
+        """Whether the player is in spectator mode"""
+
     @property
     def isRiding(self) -> bool:
-        """玩家是否在骑行"""
+        """Whether the player is riding"""
+
     @property
     def isDancing(self) -> bool:
-        """玩家是否在跳舞"""
+        """Whether the player is dancing"""
+
     @property
     def isCreative(self) -> bool:
-        """玩家是否是创造模式"""
+        """Whether the player is in creative mode"""
+
     @property
     def isFlying(self) -> bool:
-        """玩家是否在飞行"""
+        """Whether the player is flying"""
+
     @property
     def isSleeping(self) -> bool:
-        """玩家是否正在睡觉"""
+        """Whether the player is currently sleeping"""
+
     @property
     def isMoving(self) -> bool:
-        """玩家是否正在移动"""
+        """Whether the player is currently moving"""
+
     @property
     def isSneaking(self) -> bool:
-        """玩家是否正在潜行"""
+        """Whether the player is currently sneaking"""
+
     def isOP(self) -> bool:
         """
-        判断玩家是否为 OP
+        Check if the player is an OP (operator)
 
         Returns:
-            玩家是否为 OP
+            Whether the player is an OP
         """
+
     def setPermLevel(self, level: T_PermLevel) -> bool:
         """
-        修改玩家操作权限
+        Modify the player's operational permission level
 
         Args:
-            level: 目标操作权限等级
+            level: Target permission level
 
         Returns:
-            是否成功修改
+            Whether the modification was successful
         """
+
     def setGameMode(self, mode: T_GameMode) -> bool:
         """
-        修改玩家游戏模式
+        Modify the player's game mode
 
         Args:
-            mode: 目标游戏模式
+            mode: Target game mode
 
         Returns:
-            是否成功修改
+            Whether the modification was successful
         """
+
     def runcmd(self, cmd: str) -> bool:
         """
-        以某个玩家身份执行一条命令
+        Execute a command as the player
 
         Args:
-            cmd: 待执行的命令
+            cmd: The command to be executed
 
         Returns:
-            是否执行成功
+            Whether the execution was successful
         """
+
     @overload
     def teleport(self, pos: T_PosType) -> bool:
         """
-        传送玩家至指定位置
+        Teleport the player to a specified position
 
-        保持传送前朝向
+        Maintain the player's orientation before teleportation
 
         Args:
-            pos: 目标位置坐标
+            pos: Target position coordinates
 
         Returns:
-            是否成功传送
+            Whether the teleportation was successful
         """
+
     @overload
     def teleport(self, pos: T_PosType, rot: DirectionAngle) -> bool:
         """
-        传送玩家至指定位置
+        Teleport the player to a specified position
 
         Args:
-            pos: 目标位置坐标
-            rot: 传送后玩家的朝向
+            pos: Target position coordinates
+            rot: Orientation of the player after teleportation
 
         Returns:
-            是否成功传送
+            Whether the teleportation was successful
         """
+
     @overload
     def teleport(
-        self,
-        x: T_Number,
-        y: T_Number,
-        z: T_Number,
-        dim_id: T_DimID,
+            self,
+            x: T_Number,
+            y: T_Number,
+            z: T_Number,
+            dim_id: T_DimID,
     ) -> bool:
         """
-        传送玩家至指定位置
+        Teleport the player to a specified position
 
-        保持传送前朝向
+        Maintain the player's orientation before teleportation
 
         Args:
-            x: 目标位置 X 坐标
-            y: 目标位置 Y 坐标
-            z: 目标位置 Z 坐标
-            dim_id: 目标维度 ID
+            x: Target position X coordinate
+            y: Target position Y coordinate
+            z: Target position Z coordinate
+            dim_id: Target dimension ID
 
         Returns:
-            是否成功传送
+            Whether the teleportation was successful
         """
+
     @overload
     def teleport(
-        self,
-        x: T_Number,
-        y: T_Number,
-        z: T_Number,
-        dim_id: T_DimID,
-        rot: DirectionAngle,
+            self,
+            x: T_Number,
+            y: T_Number,
+            z: T_Number,
+            dim_id: T_DimID,
+            rot: DirectionAngle,
     ) -> bool:
         """
-        传送玩家至指定位置
+        Teleport the player to a specified position
 
         Args:
-            x: 目标位置 X 坐标
-            y: 目标位置 Y 坐标
-            z: 目标位置 Z 坐标
-            dim_id: 目标维度 ID
-            rot: 传送后玩家的朝向
+            x: Target position X coordinate
+            y: Target position Y coordinate
+            z: Target position Z coordinate
+            dim_id: Target dimension ID
+            rot: Orientation of the player after teleportation
 
         Returns:
-            是否成功传送
+            Whether the teleportation was successful
         """
+
     def kill(self) -> bool:
         """
-        杀死玩家
+        Kill the player
 
         Returns:
-            是否成功执行
+            Whether the execution was successful
         """
+
     @overload
     def kick(self) -> bool:
         """
-        断开玩家连接
+        Disconnect the player
 
         Returns:
-            是否成功断开连接
+            Whether the disconnection was successful
         """
+
     @overload
     def kick(self, msg: str) -> bool:
         """
-        断开玩家连接
+        Disconnect the player
 
         Args:
-            msg: 被踢出玩家出显示的断开原因
+            msg: Reason displayed to the kicked player
 
         Returns:
-            是否成功断开连接
+            Whether the disconnection was successful
         """
+
     @overload
     def disconnect(self) -> bool:
         """
-        断开玩家连接
+        Disconnect the player
 
         Returns:
-            是否成功断开连接
+            Whether the disconnection was successful
         """
+
     @overload
     def disconnect(self, msg: str) -> bool:
         """
-        断开玩家连接
+        Disconnect the player
 
         Args:
-            msg: 被踢出玩家出显示的断开原因
+            msg: Reason displayed to the kicked player
 
         Returns:
-            是否成功断开连接
+            Whether the disconnection was successful
         """
+
     def tell(self, msg: str, msg_type: T_TextPacketType = 0) -> bool:
         """
-        发送一个文本消息给玩家
+        Send a text message to the player
 
         Args:
-            msg: 待发送的文本
-            msg_type: 发送的文本消息类型
+            msg: Text to be sent
+            msg_type: Type of the text message being sent
 
         Returns:
-            是否成功发送
+            Whether the sending was successful
         """
+
     def sendText(self, msg: str, msg_type: T_TextPacketType = 0) -> bool:
         """
-        发送一个文本消息给玩家
+        Send a text message to the player
 
         Args:
-            msg: 待发送的文本
-            msg_type: 发送的文本消息类型
+            msg: Text to be sent
+            msg_type: Type of the text message being sent
 
         Returns:
-            是否成功发送
+            Whether the sending was successful
         """
+
     @overload
     def talkAs(self, text: str) -> bool:
         """
-        以某个玩家身份说话
+        Speak as the player
 
         Args:
-            text: 模拟说话内容
+            text: Simulated speech content
 
         Returns:
-            是否执行成功
+            Whether the execution was successful
         """
+
     @overload
     def talkAs(self, target: LLSE_Player, text: str) -> bool:
         """
-        以某个玩家身份向某玩家说话
+        Speak as the player to another player
 
         Args:
-            target: 模拟说话对象
-            text: 模拟说话内容
+            target: Player to simulate speaking to
+            text: Simulated speech content
 
         Returns:
-            是否执行成功
+            Whether the execution was successful
         """
+
     @overload
     def setTitle(self, content: str, title_type: T_TitlePacketType = 2) -> bool:
         """
-        设置玩家显示标题
+        Set the player's display title
 
         Args:
-            content: 欲设置标题内容
-            title_type: 设置的标题类型
+            content: Desired title content
+            title_type: Type of the title being set
 
         Returns:
-            是否成功发送
+            Whether the sending was successful
         """
+
     @overload
     def setTitle(
-        self,
-        content: str,
-        title_type: T_TitlePacketType,
-        fade_in_time: int,
-        stay_time_int: int,
-        fade_out_time: int,
+            self,
+            content: str,
+            title_type: T_TitlePacketType,
+            fade_in_time: int,
+            stay_time_int: int,
+            fade_out_time: int,
     ) -> bool:
         """
-        设置玩家显示标题
+        Set the player's display title
 
         Args:
-            content: 欲设置标题内容
-            title_type: 设置的标题类型
-            fade_in_time: 淡入时间，单位为 `Tick`
-            stay_time_int: 停留时间，单位为 `Tick`
-            fade_out_time: 淡出时间，单位为 `Tick`
+            content: Desired title content
+            title_type: Type of the title being set
+            fade_in_time: Fade-in time, in ticks
+            stay_time_int: Stay time, in ticks
+            fade_out_time: Fade-out time, in ticks
 
         Returns:
-            是否成功发送
+            Whether the sending was successful
         """
+
     def rename(self, new_name: str) -> bool:
         """
-        重命名玩家
+        Rename the player
 
         Args:
-            new_name: 玩家的新名字
+            new_name: Player's new name
 
         Returns:
-            是否重命名成功
+            Whether the renaming was successful
         """
+
     def setFire(self, time: int, is_effect: bool) -> bool:
         """
-        使指定玩家着火
+        Set the specified player on fire
 
         Args:
-            time: 着火时长，单位秒
-            is_effect: 会不会有火的效果
+            time: Duration of being on fire, in seconds
+            is_effect: Whether there will be a fire effect
 
         Returns:
-            是否成功着火
+            Whether setting on fire was successful
         """
+
     def stopFire(self) -> bool:
         """
-        熄灭玩家
+        Extinguish the player
 
         Returns:
-            是否已被熄灭
+            Whether the player has been extinguished
         """
+
     def transServer(self, server: str, port: int) -> bool:
         """
-        传送玩家至指定服务器
+        Teleport the player to a specified server
 
         Args:
-            server: 目标服务器 IP / 域名
-            port: 目标服务器端口
+            server: Target server IP/domain
+            port: Target server port
 
         Returns:
-            是否成功传送
+            Whether the teleportation was successful
         """
+
     def crash(self) -> bool:
         """
-        使玩家客户端崩溃
+        Cause the player's client to crash
 
         Returns:
-            是否成功执行
+            Whether the execution was successful
         """
+
     def hurt(self, damage: int) -> bool:
         """
-        对玩家造成伤害
+        Inflict damage on the player
 
-        此处造成的伤害为真实伤害，无法被盔甲等保护装备减免
+        The damage inflicted here is true damage and cannot be reduced by protective equipment such as armor
 
         Args:
-            damage: 对玩家造成的伤害数值
+            damage: Numeric value of damage inflicted on the player
 
         Returns:
-            是否造成伤害
+            Whether the damage was inflicted
         """
+
     def heal(self, health: int) -> bool:
         """
-        治疗玩家
+        Heal the player
 
         Args:
-            health: 治疗的心数
+            health: Number of hearts to heal
 
         Returns:
-            治疗是否成功
+            Whether the healing was successful
         """
+
     def setHealth(self, health: int) -> bool:
         """
-        设置玩家的生命值
+        Set the player's health
 
         Args:
-            health: 生命值数
+            health: Health value
 
         Returns:
-            是否成功
+            Whether the setting was successful
         """
+
     def setMaxHealth(self, health: int) -> bool:
         """
-        设置玩家最大生命值
+        Set the player's maximum health
 
         Args:
-            health: 生命值数
+            health: Health value
 
         Returns:
-            是否成功
+            Whether the setting was successful
         """
+
     def setAbsorption(self, value: int) -> bool:
         """
-        为玩家设置伤害吸收属性
+        Set the damage absorption attribute for the player
 
         Args:
-            value: 新的值
+            value: New value
 
         Returns:
-            为玩家设置属性值是否成功
+            Whether setting the attribute value for the player was successful
         """
+
     def setAttackDamage(self, value: int) -> bool:
         """
-        为玩家设置攻击伤害属性
+        Set the attack damage attribute for the player
 
         Args:
-            value: 新的值
+            value: New value
 
         Returns:
-            为玩家设置属性值是否成功
+            Whether setting the attribute value for the player was successful
         """
+
     def setMaxAttackDamage(self, value: int) -> bool:
         """
-        为玩家设置最大攻击伤害属性
+        Set the maximum attack damage attribute for the player
 
         Args:
-            value: 新的值
+            value: New value
 
         Returns:
-            为玩家设置属性值是否成功
+            Whether setting the attribute value for the player was successful
         """
+
     def setFollowRange(self, value: int) -> bool:
         """
-        为玩家设置跟随范围
+        Set the follow range for the player
 
         Args:
-            value: 新的值
+            value: New value
 
         Returns:
-            为玩家设置属性值是否成功
+            Whether setting the attribute value for the player was successful
         """
+
     def setKnockbackResistance(self, value: int) -> bool:
         """
-        为玩家设置击退抵抗属性
+        Set the knockback resistance attribute for the player
 
         Args:
-            value: 新的值
+            value: New value
 
         Returns:
-            为玩家设置属性值是否成功
+            Whether setting the attribute value for the player was successful
         """
+
     def setLuck(self, value: int) -> bool:
         """
-        为玩家设置幸运属性
+        Set the luck attribute for the player
 
         Args:
-            value: 新的值
+            value: New value
 
         Returns:
-            为玩家设置属性值是否成功
+            Whether setting the attribute value for the player was successful
         """
+
     def setMovementSpeed(self, value: int) -> bool:
         """
-        为玩家设置移动速度属性
+        Set the movement speed attribute for the player
 
         Args:
-            value: 新的值
+            value: New value
 
         Returns:
-            为玩家设置属性值是否成功
+            Whether setting the attribute value for the player was successful
         """
+
     def setUnderwaterMovementSpeed(self, value: int) -> bool:
         """
-        为玩家设置水下移动速度属性
+        Set the underwater movement speed attribute for the player
 
         Args:
-            value: 新的值
+            value: New value
 
         Returns:
-            为玩家设置属性值是否成功
+            Whether setting the attribute value for the player was successful
         """
+
     def setLavaMovementSpeed(self, value: int) -> bool:
         """
-        为玩家设置岩浆上移动速度属性
+        Set the lava movement speed attribute for the player
 
         Args:
-            value: 新的值
+            value: New value
 
         Returns:
-            为玩家设置属性值是否成功
+            Whether setting the attribute value for the player was successful
         """
+
     def setHungry(self, hunger: int) -> bool:
         """
-        设置玩家饥饿值
+        Set the player's hunger level
 
         Args:
-            hunger: 饥饿值数
+            hunger: Hunger value
 
         Returns:
-            是否成功
+            Whether the setting was successful
         """
+
     def refreshChunks(self) -> bool:
         """
-        刷新玩家加载的所有区块
+        Refresh all chunks loaded by the player
 
         Returns:
-            是否成功刷新
+            Whether the refresh was successful
         """
+
     @overload
     def giveItem(self, item: LLSE_Item) -> bool:
         """
-        给予玩家一个物品
+        Give the player an item
 
-        如果玩家物品栏已满，将抛出多余物品
+        If the player's inventory is full, excess items will be thrown away
 
         Args:
-            item: 给予的物品对象
+            item: Item object to be given
 
         Returns:
-            是否成功给予
+            Whether the giving was successful
         """
+
     @overload
     def giveItem(self, item: LLSE_Item, amount: int) -> bool:
         """
-        给予玩家一个物品
+        Give the player an item
 
-        如果玩家物品栏已满，将抛出多余物品
+        If the player's inventory is full, excess items will be thrown away
 
         Args:
-            item: 给予的物品对象
-            amount: 给予物品对象的数量，物品对象自身的 `Count` 属性将被忽略
+            item: Item object to be given
+            amount: Quantity of the item to be given, the `Count` attribute of the item object itself will be ignored
 
         Returns:
-            是否成功给予
+            Whether the giving was successful
         """
+
     def clearItem(self, item_type: str, count: int = 1) -> int:
         """
-        清除玩家背包中指定类型的物品
+        Clear items of a specified type from the player's inventory
 
-        将玩家物品栏、主手、副手、盔甲栏中所有物品的 `type` 属性与此字符串进行比较，如果相等，则清除此物品
+        Compares the `type` attribute of all items in the player's inventory, main hand, off hand, and armor slots with this string,
+        and clears the item if they are equal.
 
         Args:
-            item_type: 要清除的物品对象类型名
-            count: 要清除的数量
+            item_type: Type name of the item to be cleared
+            count: Quantity to be cleared
 
         Returns:
-            清除的物品个数
+            Number of cleared items
         """
+
     def isSprinting(self) -> bool:
         """
-        获取玩家疾跑状态
+        Get the player's sprinting state
 
         Returns:
-            玩家疾跑状态
+            Player's sprinting state
         """
+
     def setSprinting(self, sprinting: bool) -> bool:
         """
-        设置玩家疾跑状态
+        Set the player's sprinting state
 
         Args:
-            sprinting: 是否为疾跑状态
+            sprinting: Whether the player is in a sprinting state
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def sendToast(self, title: str, message: str) -> bool:
         """
-        在屏幕上方显示消息
+        Display a message at the top of the screen
 
-        类似于成就完成
+        Similar to achievement completion
 
         Args:
-            title: 待发送的标题
-            message: 待发送的文本
+            title: Title to be sent
+            message: Text to be sent
 
         Returns:
-            是否成功发送
+            Whether the message was successfully sent
         """
+
     def distanceTo(self, pos: LLSE_Entity | LLSE_Player | T_PosType) -> T_Number:
         """
-        获取玩家到坐标的距离
+        Get the distance from the player to a coordinate
 
-        若玩家的坐标与目标的坐标不在同一维度，将返回整数最大值
+        If the player's coordinates and the target's coordinates are not in the same dimension, the maximum integer value will be returned
 
         Args:
-            pos: 目标位置
+            pos: Target position
 
         Returns:
-            到坐标的距离(方块)
+            Distance to the coordinate (blocks)
         """
+
     def distanceToSqr(
-        self,
-        pos: LLSE_Entity | LLSE_Player | T_PosType,
+            self,
+            pos: LLSE_Entity | LLSE_Player | T_PosType,
     ) -> T_Number:
         """
-        获取玩家到坐标的距离
+        Get the squared distance from the player to a coordinate
 
-        若玩家的坐标与目标的坐标不在同一维度，将返回整数最大值。
+        If the player's coordinates and the target's coordinates are not in the same dimension, the maximum integer value will be returned
 
         Args:
-            pos: 目标位置
+            pos: Target position
 
         Returns:
-            到坐标的距离(方块)
+            Squared distance to the coordinate (blocks)
         """
+
     def getBlockStandingOn(self) -> LLSE_Block:
         """
-        获取玩家当前站立所在的方块
+        Get the block on which the player is currently standing
 
         Returns:
-            当前站立在的方块对象
+            Block object on which the player is currently standing
         """
+
     def getDevice(self) -> LLSE_Device:
         """
-        获取玩家对应的设备信息对象
+        Get the device information object corresponding to the player
 
         Returns:
-            玩家对应的设备信息对象
+            Device information object corresponding to the player
         """
+
     def getHand(self) -> LLSE_Item:
         """
-        获取玩家主手中的物品对象
+        Get the item object in the player's main hand
 
-        此处获取的物品对象为引用。
-        也就是说，修改此处返回的物品对象，或使用其API，就相当于直接操作玩家主手中对应的物品
+        The item object obtained here is a reference.
+        In other words, modifying the item object returned here or using its API is equivalent to directly manipulating the item in the player's main hand
 
         Returns:
-            玩家主手中的物品对象
+            Item object in the player's main hand
         """
+
     def getOffHand(self) -> LLSE_Item:
         """
-        获取玩家副手中的物品对象
+        Get the item object in the player's off hand
 
-        此处获取的物品对象为引用。
-        也就是说，修改此处返回的物品对象，或使用其API，就相当于直接操作玩家副手中对应的物品
+        The item object obtained here is a reference.
+        In other words, modifying the item object returned here or using its API is equivalent to directly manipulating the item in the player's off hand
 
         Returns:
-            玩家副手中的物品对象
+            Item object in the player's off hand
         """
+
     def getPlayerInventoryContainer(self) -> LLSE_Container:
         """
-        获取玩家物品栏对应的容器对象
+        Get the container object corresponding to the player's inventory
 
         Returns:
-            玩家物品栏对应的容器对象
+            Container object corresponding to the player's inventory
         """
+
     def getArmor(self) -> LLSE_Container:
         """
-        获取玩家盔甲栏的容器对象
+        Get the container object corresponding to the player's armor slots
 
         Returns:
-            玩家盔甲栏对应的容器对象
+            Container object corresponding to the player's armor slots
         """
+
     def getEnderChest(self) -> LLSE_Container:
         """
-        获取玩家末影箱的容器对象
+        Get the container object corresponding to the player's ender chest
 
         Returns:
-            玩家末影箱对应的容器对象
+            Container object corresponding to the player's ender chest
         """
+
     def getRespawnPosition(self) -> IntPos:
         """
-        获取玩家的重生坐标
+        Get the player's respawn coordinates
 
         Returns:
-            重生点坐标
+            Respawn point coordinates
         """
+
     @overload
     def setRespawnPosition(self, pos: IntPos) -> bool:
         """
-        修改玩家的重生坐标
+        Modify the player's respawn coordinates
 
         Args:
-            pos: 重生坐标
+            pos: Respawn coordinates
 
         Returns:
-            是否成功修改
+            Whether the modification was successful
         """
+
     @overload
     def setRespawnPosition(self, x: int, y: int, z: int, dim_id: T_DimID) -> bool:
         """
-        修改玩家的重生坐标
+        Modify the player's respawn coordinates
 
         Args:
-            x: 重生 X 坐标
-            y: 重生 Y 坐标
-            z: 重生 Z 坐标
-            dim_id: 重生维度 ID
+            x: Respawn X coordinate
+            y: Respawn Y coordinate
+            z: Respawn Z coordinate
+            dim_id: Respawn dimension ID
 
         Returns:
-            是否成功修改
+            Whether the modification was successful
         """
+
     def refreshItems(self) -> bool:
         """
-        刷新玩家物品栏、盔甲栏
+        Refresh the player's inventory and armor slots
 
-        在修改玩家物品之后，为了促使客户端生效，需要刷新玩家所有的物品
+        After modifying the player's items, to make it take effect on the client, all of the player's items need to be refreshed
 
         Returns:
-            是否成功刷新
+            Whether the refresh was successful
         """
+
     def getScore(self, name: str) -> int:
         """
-        获取在线玩家计分项的分数
+        Get the score of the online player for a scoreboard item
 
-        使用前，必须保证对应的计分项已经存在
+        Before using, make sure that the corresponding scoreboard item exists
 
         Args:
-            name: 计分项名称
+            name: Scoreboard item name
 
         Returns:
-            计分板上的数值
+            Numeric value on the scoreboard
         """
+
     def setScore(self, name: str, value: int) -> bool:
         """
-        设置在线玩家计分项的分数
+        Set the score of the online player for a scoreboard item
 
-        若计分项不存在，则会返回 `False` 并创建计分项
+        If the scoreboard item does not exist, it will return `False` and create the scoreboard item
 
         Args:
-            name: 计分项名称
-            value: 要设置的数值
+            name: Scoreboard item name
+            value: Value to be set
 
         Returns:
-            计分板上的数值
+            Numeric value on the scoreboard
         """
+
     def addScore(self, name: str, value: int) -> bool:
         """
-        增加在线玩家计分项的分数
+        Increase the score of the online player for a scoreboard item
 
-        若计分项不存在，则会返回 `False` 并创建计分项
+        If the scoreboard item does not exist, it will return `False` and create the scoreboard item
 
         Args:
-            name: 计分项名称
-            value: 要增加的数值
+            name: Scoreboard item name
+            value: Value to be added
 
         Returns:
-            计分板上的数值
+            Numeric value on the scoreboard
         """
+
     def reduceScore(self, name: str, value: int) -> bool:
         """
-        减少在线玩家计分项的分数
+        Decrease the score of the online player for a scoreboard item
 
-        若计分项不存在，则会返回 `False` 并创建计分项
+        If the scoreboard item does not exist, it will return `False` and create the scoreboard item
 
         Args:
-            name: 计分项名称
-            value: 要减少的数值
+            name: Scoreboard item name
+            value: Value to be reduced
 
         Returns:
-            计分板上的数值
+            Numeric value on the scoreboard
         """
+
     def deleteScore(self, name: str) -> bool:
         """
-        玩家停止跟踪计分项
+        Stop tracking the scoreboard item for the player
 
-        使用前，必须保证对应的计分项已经存在
+        Before using, make sure that the corresponding scoreboard item exists
 
         Args:
-            name: 计分项名称
+            name: Scoreboard item name
 
         Returns:
-            是否移除成功
+            Whether the removal was successful
         """
+
     def setSidebar(
-        self,
-        title: str,
-        data: dict[str, int],
-        sort_order: Literal[0, 1] = 1,
+            self,
+            title: str,
+            data: dict[str, int],
+            sort_order: Literal[0, 1] = 1,
     ) -> bool:
         """
-        设置玩家自定义侧边栏
+        Set a custom sidebar for the player
 
         Args:
-            title: 侧边栏标题
-            data: 侧边栏对象内容对象。对象中的每个键值对将被设置为侧边栏内容的一行
-            sort_order: 侧边栏内容的排序顺序。`0` 为按分数升序，`1` 为按分数降序
+            title: Sidebar title
+            data: Content object of the sidebar object. Each key-value pair in the object will be set as a line of the sidebar content
+            sort_order: Sorting order of the sidebar content. `0` for ascending order by score, `1` for descending order by score
 
         Returns:
             _description_
         """
+
     def removeSidebar(self) -> bool:
         """
-        移除玩家自定义侧边栏
+        Remove the custom sidebar for the player
 
         Returns:
-            是否成功移除
+            Whether the removal was successful
         """
+
     @overload
     def setBossBar(
-        self,
-        title: str,
-        percent: int,
-        color: T_BossEventColor = 2,
+            self,
+            title: str,
+            percent: int,
+            color: T_BossEventColor = 2,
     ) -> bool:
         """
-        设置玩家看到的自定义 Boss 血条
+        Set a custom Boss bar visible to the player
 
         Args:
-            title: 自定义血条标题
-            percent: 血条中的血量百分比，有效范围为 0 ~ 100
-            color: 血条颜色
+            title: Custom bar title
+            percent: Percentage of health in the bar, valid range is 0 ~ 100
+            color: Bar color
 
         Returns:
-            是否成功设置
+            Whether the setting was successful
         """
+
     @overload
     def setBossBar(
-        self,
-        uid: int,
-        title: str,
-        percent: int,
-        color: T_BossEventColor = 2,
+            self,
+            uid: int,
+            title: str,
+            percent: int,
+            color: T_BossEventColor = 2,
     ) -> bool:
         """
-        设置玩家看到的自定义 Boss 血条
+        Set a custom Boss bar visible to the player
 
         Args:
-            uid: 唯一标识符，不可冲突重复！一个 uid 对于一行 BossBar
-            title: 自定义血条标题
-            percent: 血条中的血量百分比，有效范围为 0 ~ 100
-            color: 血条颜色
+            uid: Unique identifier, must not conflict! One uid corresponds to one line of BossBar
+            title: Custom bar title
+            percent: Percentage of health in the bar, valid range is 0 ~ 100
+            color: Bar color
 
         Returns:
-            是否成功设置
+            Whether the setting was successful
         """
+
     @overload
     def removeBossBar(self) -> bool:
         """
-        移除玩家的自定义的指定 Boss 血条
+        Remove the player's custom specified Boss bar
 
         Returns:
-            是否成功移除
+            Whether the removal was successful
         """
+
     @overload
     def removeBossBar(self, uid: int) -> bool:
         """
-        移除玩家的自定义的指定 Boss 血条
+        Remove the player's custom specified Boss bar
 
         Args:
-            uid: 标识符，与 `setBossBar` 对应
+            uid: Identifier corresponding to `setBossBar`
 
         Returns:
-            是否成功移除
+            Whether the removal was successful
         """
+
     def addLevel(self, count: int) -> bool:
         """
-        提高玩家经验等级
+        Increase the player's experience level
 
         Args:
-            count: 要提高的经验等级
+            count: Experience level to increase
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def reduceLevel(self, count: int) -> bool:
         """
-        降低玩家经验等级
+        Decrease the player's experience level
 
         Args:
-            count: 要降低的经验等级
+            count: Experience level to decrease
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def getLevel(self) -> int:
         """
-        获取玩家经验等级
+        Get the player's experience level
 
         Returns:
-            玩家的经验等级
+            Player's experience level
         """
+
     def setLevel(self, count: int) -> bool:
         """
-        设置玩家经验等级
+        Set the player's experience level
 
         Args:
-            count: 要设置的经验等级
+            count: Experience level to set
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def resetLevel(self) -> bool:
         """
-        重置玩家经验
+        Reset the player's experience
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def addExperience(self, count: int) -> bool:
         """
-        提高玩家经验值
+        Increase the player's experience points
 
         Args:
-            count: 要提高的经验值
+            count: Experience points to increase
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def reduceExperience(self, count: int) -> bool:
         """
-        降低玩家经验值
+        Decrease the player's experience points
 
         Args:
-            count: 要降低的经验值
+            count: Experience points to decrease
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def getCurrentExperience(self) -> int:
         """
-        获取玩家当前经验值
+        Get the player's current experience points
 
         Returns:
-            玩家总经验值
+            Player's total experience points
         """
+
     def setCurrentExperience(self, count: int) -> bool:
         """
-        设置玩家当前经验值
+        Set the player's current experience points
 
         Args:
-            count: 要设置的经验值
+            count: Experience points to set
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def getTotalExperience(self) -> int:
         """
-        获取玩家总经验值
+        Get the player's total experience points
 
         Returns:
-            玩家总经验值
+            Player's total experience points
         """
+
     def setTotalExperience(self, count: int) -> bool:
         """
-        设置玩家总经验值
+        Set the player's total experience points
 
         Args:
-            count: 要设置的经验值
+            count: Experience points to set
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def getXpNeededForNextLevel(self) -> int:
         """
-        获取玩家升级所需的经验值
+        Get the experience points needed for the player to level up
 
-        注意，此方法在计算时会忽略当前经验值
+        Note that this method ignores the current experience points
 
         Returns:
-            玩家升级所需的经验值
+            Experience points needed for the player to level up
         """
+
     def setScale(self, scale: int) -> bool:
         """
-        缩放玩家
+        Resize the player
 
         Args:
-            scale: 新的玩家体积
+            scale: New player volume
 
         Returns:
-            玩家是否成功地被缩放
+            Whether the player was successfully resized
         """
+
     def setAbility(self, ability_id: int, value: bool) -> bool:
         """
-        设置玩家 Ability 属性
+        Set the player's Ability attribute
 
         Args:
-            ability_id: Ability 的 ID
-            value: 是否开启
+            ability_id: ID of the Ability
+            value: Whether to enable
 
         Returns:
-            无作用
+            No effect
         """
+
     def getBiomeId(self) -> int:
         """
-        获取玩家所在群系 ID
+        Get the biome ID where the player is located
 
         Returns:
-            群系 ID
+            Biome ID
         """
+
     def getBiomeName(self) -> str:
         """
-        获取玩家所在群系名称
+        Get the name of the biome where the player is located
 
         Returns:
-            群系名称
+            Biome name
         """
+
     def getAllEffects(self) -> list[T_EffectID] | None:
         """
-        获取玩家身上的状态效果
+        Get the status effects on the player
 
         Returns:
-            状态效果 ID 列表。如果玩家身上没有状态效果则返回 `None`
+            List of status effect IDs. Returns `None` if the player has no status effects
         """
+
     def addEffect(self, effect_id: T_EffectID, tick: int, level: int) -> bool:
         """
-        给玩家添加状态效果
+        Add a status effect to the player
 
         Args:
-            effect_id: 状态效果数字 ID
-            tick: 持续的 `Ticks`
-            level: 效果等级
+            effect_id: Numeric ID of the status effect
+            tick: Duration in `Ticks`
+            level: Effect level
 
         Returns:
-            是否成功添加效果
+            Whether the effect was successfully added
         """
+
     def removeEffect(self, effect_id: T_EffectID) -> bool:
         """
-        移除玩家的状态效果
+        Remove a status effect from the player
 
         Args:
-            effect_id: 状态效果数字 ID
+            effect_id: Numeric ID of the status effect
 
         Returns:
-            是否成功移除效果
+            Whether the effect was successfully removed
         """
+
     def sendModalForm(
-        self,
-        title: str,
-        content: str,
-        confirm_button: str,
-        cancel_button: str,
-        callback: T_ModalFormCallback,
+            self,
+            title: str,
+            content: str,
+            confirm_button: str,
+            cancel_button: str,
+            callback: T_ModalFormCallback,
     ) -> int | None:
         """
-        向玩家发送模式表单
+        Send a modal form to the player
 
-        模式表单包含一个标题、一个文本显示框以及两个按钮
+        The modal form contains a title, a text display box, and two buttons
 
         Callback Args:
-            player (LLSE_Player): 与表单互动的玩家对象
-            result (bool | None): 玩家点击确定按钮为 `True`，取消按钮为 `False`。如果为 `None`，则代表玩家取消了表单
+            player (LLSE_Player): Player object interacting with the form
+            result (bool | None): `True` if the player clicks the confirm button, `False` for the cancel button. If `None`, it means the player canceled the form
 
         Args:
-            title: 表单标题
-            content: 表单内容
-            confirm_button: 按钮 1（确认）文本的字符串
-            cancel_button: 按钮 2（取消）文本的字符串
-            callback: 玩家点击按钮之后被调用的回调函数
+            title: Form title
+            content: Form content
+            confirm_button: String for button 1 (confirm)
+            cancel_button: String for button 2 (cancel)
+            callback: Callback function called after the player clicks a button
 
         Returns:
-            发送的表单 ID。如果返回值为 `None`，则代表发送失败
+            ID of the sent form. Returns `None` if sending fails
         """
+
     def sendSimpleForm(
-        self,
-        title: str,
-        content: str,
-        buttons: list[str],
-        images: list[str],
-        callback: T_SimpleFormCallback,
+            self,
+            title: str,
+            content: str,
+            buttons: list[str],
+            images: list[str],
+            callback: T_SimpleFormCallback,
     ) -> int | None:
         """
-        向玩家发送普通表单
+        Send a simple form to the player
 
         Callback Args:
-            player (LLSE_Player): 与表单互动的玩家对象
-            button_id (int | None): 玩家点击的表单按钮的序号，从 `0` 开始编号。如果为 `None`，则代表玩家取消了表单
+            player (LLSE_Player): Player object interacting with the form
+            button_id (int | None): Index of the form button that the player clicked, numbered from `0`. If `None`, it means the player canceled the form
 
         Args:
-            title: 表单标题
-            content: 表单内容
-            buttons: 各个按钮文本的字符串数组
-            images: 各个按钮对应的图片路径。不需要图片请设为空字符串
-                元素格式为 `textures/items/apple`(材质包路径) 或 `https://1919810.work/apple.png`(完整URL)
-            callback: 玩家点击按钮之后被调用的回调函数
+            title: Form title
+            content: Form content
+            buttons: Array of strings for each button
+            images: Array of image paths corresponding to each button. Leave as an empty string if no image is needed
+                Element format: `textures/items/apple` (texture pack path) or `https://1919810.work/apple.png` (full URL)
+            callback: Callback function called after the player clicks a button
 
         Returns:
-            发送的表单 ID。如果返回值为 `None`，则代表发送失败
+            ID of the sent form. Returns `None` if sending fails
         """
+
     def sendCustomForm(self, json: str, callback: T_CustomFormCallback) -> int | None:
         """
-        向玩家发送自定义表单（JSON 格式）
+        Send a custom form to the player (in JSON format)
 
         Callback Args:
-            player (LLSE_Player): 与表单互动的玩家对象
-            data (list[bool | int | str | None] | None): 返回的表单内容数组。
-                数组中，第一项一定为 `None`，从第二项开始，按表单上的控件顺序储存了每一个控件的内容
-                如果 `data` 仅为 `None`，则代表玩家取消了表单
+            player (LLSE_Player): Player object interacting with the form
+            data (list[bool | int | str | None] | None): Array of returned form content.
+                The first item in the array must be `None`. Starting from the second item, it stores the content of each control in the order of the form.
+                If `data` is only `None`, it means the player canceled the form
 
         Args:
-            json: 自定义表单 json 字符串
-            callback: 玩家提交表单之后被调用的回调函数
+            json: JSON string of the custom form
+            callback: Callback function called after the player submits the form
 
         Returns:
-            发送的表单 ID。如果返回值为 `None`，则代表发送失败
+            ID of the sent form. Returns `None` if sending fails
         """
+
     @overload
     def sendForm(
-        self,
-        form: LLSE_SimpleForm,
-        callback: T_SimpleFormCallback,
+            self,
+            form: LLSE_SimpleForm,
+            callback: T_SimpleFormCallback,
     ) -> int | None:
         """
-        向玩家发送普通表单
+        Send a simple form to the player
 
         Callback Args:
-            player (LLSE_Player): 与表单互动的玩家对象
-            button_id (int | None): 玩家点击的表单按钮的序号，从 `0` 开始编号。如果为 `None`，则代表玩家取消了表单
+            player (LLSE_Player): Player object interacting with the form
+            button_id (int | None): Index of the form button that the player clicked, numbered from `0`. If `None`, it means the player canceled the form
 
         Args:
-            form: 配置好的表单对象
-            callback: 玩家与表单元素互动之后被调用的回调函数
+            form: Configured form object
+            callback: Callback function called after the player interacts with the form elements
 
         Returns:
-            发送的表单 ID。如果返回值为 `None`，则代表发送失败
+            ID of the sent form. Returns `None` if sending fails
         """
+
     @overload
     def sendForm(
-        self,
-        form: LLSE_CustomForm,
-        callback: T_CustomFormCallback,
+            self,
+            form: LLSE_CustomForm,
+            callback: T_CustomFormCallback,
     ) -> int | None:
         """
-        向玩家发送自定义表单
+        Send a custom form to the player
 
         Callback Args:
-            player (LLSE_Player): 与表单互动的玩家对象
-            data (list[bool | int | str | None] | None): 返回的表单内容数组。
-                数组中按表单上的控件顺序储存了每一个控件的内容。
-                如果 `data` 仅为 `None`，则代表玩家取消了表单
+            player (LLSE_Player): Player object interacting with the form
+            data (list[bool | int | str | None] | None): Array of returned form content.
+                The array stores the content of each control in the order of the form.
+                If `data` is only `None`, it means the player canceled the form
 
         Args:
-            form: 配置好的表单对象
-            callback: 玩家与表单元素互动之后被调用的回调函数
+            form: Configured form object
+            callback: Callback function called after the player interacts with the form elements
 
         Returns:
-            发送的表单 ID。如果返回值为 `None`，则代表发送失败
+            ID of the sent form. Returns `None` if sending fails
         """
+
     def sendPacket(self, packet: LLSE_Packet) -> bool:
         """
-        向玩家发送数据包
+        Send a packet to the player
 
         Args:
-            packet: 数据包
+            packet: Packet object
 
         Returns:
-            是否成功
+            Whether the sending was successful
         """
+
     def setExtraData(self, name: str, data: Any) -> bool:
         """
-        储存玩家绑定数据
+        Store player-bound data
 
         Args:
-            name: 要储存到绑定数据的名字
-            data: 你要储存的绑定数据
+            name: Name to store the data in
+            data: Data to store
 
         Returns:
-            是否成功储存
+            Whether the storing was successful
         """
+
     def getExtraData(self, name: str) -> Any | None:
         """
-        获取玩家绑定数据
+        Get player-bound data
 
         Args:
-            name: 要读取的绑定数据的名字
+            name: Name of the data to read
 
         Returns:
-            储存的绑定数据。如返回值为 `None` 则表示未获取到指定的绑定数据，或者数据为空
+            Stored bound data. Returns `None` if the specified bound data is not found or the data is empty
         """
+
     def delExtraData(self, name: str) -> bool:
         """
-        删除玩家绑定数据
+        Delete player-bound data
 
         Args:
-            name: 要删除的绑定数据的名字
+            name: Name of the data to delete
 
         Returns:
-            是否删除成功
+            Whether the deletion was successful
         """
+
     def setNbt(self, nbt: NbtCompound) -> bool:
         """
-        写入在线玩家对应的 NBT 对象
+        Write to the NBT object corresponding to the online player
 
         Args:
-            nbt: NBT 对象
+            nbt: NBT object
 
         Returns:
-            是否成功写入
+            Whether writing was successful
         """
+
     def getNbt(self) -> NbtCompound:
         """
-        获取在线玩家对应的 NBT 对象
+        Get the NBT object corresponding to the online player
 
         Returns:
-            玩家的 NBT 对象
+            Player's NBT object
         """
+
     def addTag(self, tag: str) -> bool:
         """
-        为玩家增加一个 Tag
+        Add a tag to the player
 
         Args:
-            tag: 要增加的 tag 字符串
+            tag: Tag string to add
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def removeTag(self, tag: str) -> bool:
         """
-        为玩家移除一个 Tag
+        Remove a tag from the player
 
         Args:
-            tag: 要移除的 tag 字符串
+            tag: Tag string to remove
 
         Returns:
-            是否移除成功
+            Whether the removal was successful
         """
+
     def hasTag(self, tag: str) -> bool:
         """
-        检查玩家是否拥有某个 Tag
+        Check if the player has a specific tag
 
         Args:
-            tag: 要检查的 tag 字符串
+            tag: Tag string to check
 
         Returns:
-            是否拥有这个 Tag
+            Whether the player has the specified tag
         """
+
     def getAllTags(self) -> list[str]:
         """
-        获取玩家拥有的所有 Tag 列表
+        Get a list of all tags the player has
 
         Returns:
-            玩家所有的 tag 字符串列表
+            List of all tag strings the player has
         """
+
     def getAbilities(self) -> dict[str, Any]:
         """
-        获取玩家的 Abilities 能力列表（来自玩家 NBT）
+        Get the player's Abilities ability list (from player NBT)
 
         Returns:
-            玩家所有能力信息的键 - 值对列表对象
+            Key-value pairs of all ability information for the player
         """
+
     def getAttributes(self) -> list[dict[str, Any]]:
         """
-        获取玩家的 Attributes 属性列表（来自玩家 NBT）
+        Get the player's Attributes attribute list (from player NBT)
 
         Returns:
-            玩家所有属性对象的数组
+            Array of all attribute objects for the player
         """
+
     def getEntityFromViewVector(self, max_distance: float = 5.25) -> LLSE_Entity | None:
         """
-        获取视线方向实体
+        Get the entity in the line of sight
 
         Args:
-            max_distance: 查找最大距离
+            max_distance: Maximum search distance
 
         Returns:
-            视线方向实体，如果获取失败，返回 `None`
+            Entity in the line of sight. Returns `None` if unsuccessful
         """
+
     def getBlockFromViewVector(
-        self,
-        include_liquid: bool = False,
-        solid_only: bool = False,
-        max_distance: float = 5.25,
-        full_only: bool = False,
+            self,
+            include_liquid: bool = False,
+            solid_only: bool = False,
+            max_distance: float = 5.25,
+            full_only: bool = False,
     ) -> LLSE_Block | None:
         """
-        获取视线方向方块
+        Get the block in the line of sight
 
         Args:
-            include_liquid: 是否包含液态方块
-            solid_only: 是否仅允许 `Solid` 类型的方块
-            max_distance: 查找最大距离
-            full_only: 是否仅允许完整方块
+            include_liquid: Whether to include liquid blocks
+            solid_only: Whether to only allow `Solid` type blocks
+            max_distance: Maximum search distance
+            full_only: Whether to only allow full blocks
 
         Returns:
-            视线方向方块。如果获取失败，返回 `None`
+            Block in the line of sight. Returns `None` if unsuccessful
         """
+
     def quickEvalMolangScript(self, exp: str) -> float:
         """
-        快速执行 Molang 表达式
+        Quickly execute Molang expressions
 
-        关于Molang的详细使用方法，请参考 [MOLANG 文档 bedrock.dev](https://bedrock.dev/zh/docs/stable/Molang)
+        For detailed usage of Molang, please refer to [MOLANG documentation on bedrock.dev](https://bedrock.dev/zh/docs/stable/Molang)
 
         Args:
-            exp: Molang 表达式
+            exp: Molang expression
 
         Returns:
-            表达式执行结果
+            Result of the expression execution
         """
+
     def getMoney(self) -> int:
         """
-        获取玩家的存款金额
+        Get the player's deposit amount
 
         Returns:
-            玩家的资金数值
+            Player's monetary amount
         """
+
     def setMoney(self, value: int) -> bool:
         """
-        设置玩家的存款金额
+        Set the player's deposit amount
 
         Args:
-            value: 要设置的金额
+            value: Amount to set
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def addMoney(self, value: int) -> bool:
         """
-        增加玩家的存款
+        Increase the player's deposit
 
         Args:
-            value: 要增加的金额
+            value: Amount to increase
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     def reduceMoney(self, value: int) -> bool:
         """
-        减少玩家的存款
+        Decrease the player's deposit
 
         Args:
-            value: 要减小的金额
+            value: Amount to decrease
 
         Returns:
-            是否设置成功
+            Whether the setting was successful
         """
+
     @overload
     def transMoney(self, target: LLSE_Player | str, money: int) -> bool: ...
+
     @overload
     def transMoney(self, target: LLSE_Player | str, money: int, note: str) -> bool:
         """
-        进行一笔转账
+        Perform a money transfer
 
         Args:
-            target: 收款的玩家的 玩家对象 或 XUID 标识符
-            money: 要支付的金额
-            note: 给这笔转账附加一些文字说明
+            target: Player object or XUID identifier of the payee
+            money: Amount to pay
+            note: Additional text explanation for this transfer
 
         Returns:
-            是否转账成功
+            Whether the transfer was successful
         """
+
     def getMoneyHistory(self, time: int) -> list[T_MoneyHistory]:
         """
-        查询历史账单
+        Query transaction history
 
         Args:
-            time: 查询从现在开始往前 `time` 秒的记录
+            time: Records from now backward for `time` seconds
 
         Returns:
-            查询结果对象的数组
+            Array of query result objects
         """
+
     def isSimulatedPlayer(self) -> bool:
         """
-        判断是否为模拟玩家
+        Check if it is a simulated player
 
         Returns:
-            是否为模拟玩家
+            Whether it is a simulated player
         """
+
     def simulateSneak(self) -> bool:
         """
-        模拟潜行
+        Simulate sneaking
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateAttack(self) -> bool:
         """
-        模拟攻击
+        Simulate an attack
 
-        默认攻击视线方向上的实体
+        Default attack on the entity in the line of sight
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateAttack(self, target: LLSE_Entity) -> bool:
         """
-        模拟攻击
+        Simulate an attack
 
         Args:
-            target: 攻击目标
+            target: Attack target
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateDestroy(self, pos: IntPos) -> bool:
         """
-        模拟破坏
+        Simulate destruction
 
-        默认破坏视线方向上的方块
+        Default destroy the block in the line of sight
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateDestroy(self, pos: IntPos, face: int = 0) -> bool:
         """
-        模拟破坏
+        Simulate destruction
 
         Args:
-            pos: 要破坏的方块的坐标
-            face: 从哪面破坏
+            pos: Coordinates of the block to destroy
+            face: From which side to destroy
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateDestroy(self, block: LLSE_Block, face: int = 0) -> bool:
         """
-        模拟破坏
+        Simulate destruction
 
         Args:
-            block: 要破坏的方块
-            face: 从哪面破坏
+            block: Block to destroy
+            face: From which side to destroy
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateDisconnect(self) -> bool:
         """
-        模拟断开连接
+        Simulate disconnection
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateInteract(self) -> bool:
         """
-        模拟交互
+        Simulate interaction
 
-        默认交互视线方向上的方块或实体
+        Default interact with the block or entity in the line of sight
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateInteract(self, target: LLSE_Entity) -> bool:
         """
-        模拟交互
+        Simulate interaction
 
         Args:
-            block: 模拟交互目标
+            block: Simulated interaction target
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateInteract(self, pos: IntPos, face: int = 0) -> bool:
         """
-        模拟交互
+        Simulate interaction
 
         Args:
-            block: 模拟交互目标坐标
-            face: 模拟交互目标坐标的面
+            block: Coordinates of the simulated interaction target
+            face: Face of the simulated interaction target coordinates
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateInteract(self, block: LLSE_Block, face: int = 0) -> bool:
         """
-        模拟交互
+        Simulate interaction
 
         Args:
-            block: 模拟交互目标方块
-            face: 模拟交互目标方块的面
+            block: Simulated interaction target block
+            face: Face of the simulated interaction target block
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateRespawn(self) -> bool:
         """
-        模拟重生
+        Simulate respawn
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateJump(self) -> bool:
         """
-        模拟跳跃
+        Simulate jumping
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateLocalMove(self, pos: T_PosType, speed: T_Number = 1) -> bool:
         """
-        相对玩家坐标系移动
+        Move in the player's coordinate system
 
         Args:
-            pos: 移动方向
-            speed: 移动速度
+            pos: Movement direction
+            speed: Movement speed
 
         Returns:
-            是否请求移动成功
+            Whether the movement request was successful
         """
+
     def simulateWorldMove(self, pos: T_PosType, speed: T_Number = 1) -> bool:
         """
-        相对世界坐标系移动
+        Move in the world coordinate system
 
         Args:
-            pos: 移动方向
-            speed: 移动速度
+            pos: Movement direction
+            speed: Movement speed
 
         Returns:
-            是否请求移动成功
+            Whether the movement request was successful
         """
+
     def simulateMoveTo(self, pos: T_PosType, speed: T_Number = 1) -> bool:
         """
-        直线移动到坐标
+        Move in a straight line to coordinates
 
-        如需自动寻路，请考虑使用 `模拟导航移动` (`LLSE_Player.simulateNavigateTo()`)
+        If automatic pathfinding is required, consider using `simulateNavigateTo()`.
 
         Args:
-            pos: 移动方向
-            speed: 移动速度
+            pos: Movement direction
+            speed: Movement speed
 
         Returns:
-            是否请求移动成功
+            Whether the movement request was successful
         """
+
     def simulateLookAt(self, target: T_PosType | LLSE_Entity | LLSE_Block) -> bool:
         """
-        模拟看向某方块或实体
+        Simulate looking at a block or entity
 
         Args:
-            target: 要看向的 坐标 / 实体 / 方块
+            target: Coordinates / entity / block to look at
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateSetBodyRotation(self, rot: T_Number) -> bool:
         """
-        模拟设置身体角度
+        Simulate setting body rotation
 
         Args:
-            rot: 要设置的角度
+            rot: Angle to set
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateNavigateTo(
-        self,
-        target: T_PosType | LLSE_Entity,
-        speed: T_Number = 1,
+            self,
+            target: T_PosType | LLSE_Entity,
+            speed: T_Number = 1,
     ) -> T_NavigatePath:
         """
-        模拟导航移动
+        Simulate navigation movement
 
         Args:
-            target: 导航目标
-            speed: 移动速度
+            target: Navigation target
+            speed: Movement speed
 
         Returns:
-            是否能到达指定位置以及导航路径
+            Whether it is possible to reach the specified position and navigation path
         """
+
     @overload
     def simulateUseItem(self) -> bool:
         """
-        模拟使用物品
+        Simulate using an item
 
-        使用的物品 默认为选中物品
-        目标坐标 默认为朝向方块坐标
-        目标方块面 默认为 `0`
-        偏移坐标 默认为 `(0.5, 0.5, 0.5)`
+        The used item defaults to the selected item.
+        Target coordinates default to the coordinates of the facing block.
+        Target block face defaults to `0`.
+        Offset coordinates default to `(0.5, 0.5, 0.5)`.
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateUseItem(self, item: int | LLSE_Item) -> bool:
         """
-        模拟使用物品
+        Simulate using an item
 
-        目标坐标 默认为朝向方块坐标
-        目标方块面 默认为 `0`
-        偏移坐标 默认为 `(0.5, 0.5, 0.5)`
+        Target coordinates default to the coordinates of the facing block.
+        Target block face defaults to `0`.
+        Offset coordinates default to `(0.5, 0.5, 0.5)`.
 
         Args:
-            item: 要使用的物品 / 物品所在的槽位 ID
+            item: Item to use / slot ID where the item is located
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateUseItem(self, item: int | LLSE_Item, pos: IntPos) -> bool:
         """
-        模拟使用物品
+        Simulate using an item
 
-        目标方块面 默认为 `0`
-        偏移坐标 默认为 `(0.5, 0.5, 0.5)`
+        Target block face defaults to `0`.
+        Offset coordinates default to `(0.5, 0.5, 0.5)`.
 
         Args:
-            item: 要使用的物品 / 物品所在的槽位 ID
-            pos: 目标坐标
+            item: Item to use / slot ID where the item is located
+            pos: Target coordinates
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateUseItem(
-        self,
-        item: int | LLSE_Item,
-        pos: IntPos,
-        face: int,
+            self,
+            item: int | LLSE_Item,
+            pos: IntPos,
+            face: int,
     ) -> bool:
         """
-        模拟使用物品
+        Simulate using an item
 
-        偏移坐标 默认为 `(0.5, 0.5, 0.5)`
+        Offset coordinates default to `(0.5, 0.5, 0.5)`.
 
         Args:
-            item: 要使用的物品 / 物品所在的槽位 ID
-            pos: 目标坐标
-            face: 目标方块的面
+            item: Item to use / slot ID where the item is located
+            pos: Target coordinates
+            face: Face of the target block
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     @overload
     def simulateUseItem(
-        self,
-        item: int | LLSE_Item,
-        pos: IntPos,
-        face: int,
-        relative: FloatPos,
+            self,
+            item: int | LLSE_Item,
+            pos: IntPos,
+            face: int,
+            relative: FloatPos,
     ) -> bool:
         """
-        模拟使用物品
+        Simulate using an item
 
         Args:
-            item: 要使用的物品 / 物品所在的槽位 ID
-            pos: 目标坐标
-            face: 目标方块的面
-            relative: 相对方块偏移坐标
+            item: Item to use / slot ID where the item is located
+            pos: Target coordinates
+            face: Face of the target block
+            relative: Relative block offset coordinates
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateStopDestroyingBlock(self) -> bool:
         """
-        模拟停止破坏方块
+        Simulate stopping block destruction
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateStopInteracting(self) -> bool:
         """
-        模拟停止交互
+        Simulate stopping interaction
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateStopMoving(self) -> bool:
         """
-        模拟停止移动
+        Simulate stopping movement
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateStopUsingItem(self) -> bool:
         """
-        模拟停止使用物品
+        Simulate stopping item usage
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
+
     def simulateStopSneaking(self) -> bool:
         """
-        模拟停止潜行
+        Simulate stopping sneaking
 
         Returns:
-            是否成功模拟操作
+            Whether the simulation was successful
         """
-    def asPointer(self) -> NativePointer: ...
-    @deprecated("请使用 `LLSE_Player.isSneaking`")
-    @property
-    def sneaking(self) -> bool: ...
-    @deprecated("请使用 `LLSE_Player.getDevice()`")
-    @property
-    def ip(self) -> str: ...
-    @deprecated("请使用 `LLSE_Player.setNbt()`")
-    def setTag(self, nbt: NbtCompound) -> bool: ...
-    @deprecated("请使用 `LLSE_Player.getNbt()`")
-    def getTag(self) -> NbtCompound: ...
-    @deprecated("请使用 `LLSE_Player.setFire()`")
-    def setOnFire(self, time: int) -> bool: ...
-    @deprecated("请使用 `LLSE_Player.getInventory()`")
-    def removeItem(self, inventory_id: int, count: int) -> bool: ...
-    @deprecated("请使用 `LLSE_Player.getInventory()`")
-    def getAllItems(self) -> T_PlayerInventory: ...
-    @deprecated("请使用 `LLSE_Player.deleteScore()`")
-    def removeScore(self, name: str) -> bool: ...
-    @deprecated("请使用 `LLSE_Player.distanceTo()`")
-    def distanceToPos(self, pos: LLSE_Entity | LLSE_Player | T_PosType) -> T_Number: ...
 
-Player = LLSE_Player
+    def asPointer(self) -> NativePointer:
+        ...
+
+    @deprecated("Please use `LLSE_Player.isSneaking`")
+    @property
+    def sneaking(self) -> bool:
+        ...
+
+    @deprecated("Please use `LLSE_Player.getDevice()`")
+    @property
+    def ip(self) -> str:
+        ...
+
+    @deprecated("Please use `LLSE_Player.setNbt()`")
+    def setTag(self, nbt: NbtCompound) -> bool:
+        ...
+
+    @deprecated("Please use `LLSE_Player.getNbt()`")
+    def getTag(self) -> NbtCompound:
+        ...
+
+    @deprecated("Please use `LLSE_Player.setFire()`")
+    def setOnFire(self, time: int) -> bool:
+        ...
+
+    @deprecated("Please use `LLSE_Player.getInventory()`")
+    def removeItem(self, inventory_id: int, count: int) -> bool:
+        ...
+
+    @deprecated("Please use `LLSE_Player.getInventory()`")
+    def getAllItems(self) -> T_PlayerInventory:
+        ...
+
+    @deprecated("Please use `LLSE_Player.deleteScore()`")
+    def removeScore(self, name: str) -> bool:
+        ...
+
+    @deprecated("Please use `LLSE_Player.distanceTo()`")
+    def distanceToPos(self, pos: LLSE_Entity | LLSE_Player | T_PosType) -> T_Number:
+        ...
+
+    Player = LLSE_Player

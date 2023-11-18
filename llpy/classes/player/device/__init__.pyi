@@ -1,78 +1,90 @@
 from typing import NoReturn
 
+
 class LLSE_Device:
-    """玩家设备信息对象"""
+    """Player device information object"""
 
     def __init__(self) -> NoReturn: ...
+
     @property
     def ip(self) -> str:
-        """玩家设备的 IP 地址与端口（格式：`114.51.45.191:9810`）"""
+        """Player device's IP address and port (format: `114.51.45.191:9810`)"""
+
     @property
     def avgPing(self) -> int:
-        """玩家的平均网络延迟时间（ms）"""
+        """Player's average network latency time (ms)"""
+
     @property
     def avgPacketLoss(self) -> float:
-        """玩家的平均网络丢包率（%）"""
+        """Player's average network packet loss rate (%)"""
+
     @property
     def lastPing(self) -> int:
-        """玩家的网络延迟时间（ms）"""
+        """Player's network latency time (ms)"""
+
     @property
     def lastPacketLoss(self) -> float:
-        """玩家的网络丢包率（%）"""
+        """Player's network packet loss rate (%)"""
+
     @property
     def os(self) -> str:
         """
-        玩家设备的操作系统类型
+        Player device's operating system type
 
-        可能返回的值如下
+        Possible return values:
 
-        - `Android` | 手机谷歌Android
-        - `iOS` | 手机苹果iOS/平板iPadOS
-        - `OSX` | 电脑苹果macOS
-        - `Amazon` | 平板/电视亚马逊FireOS
-        - `GearVR` | 头显三星GearVR
-        - `Hololens` | 头显微软HoloLens
-        - `Windows10` | 电脑微软Windows
-        - `Win32` | 电脑微软Win32（教育版？）
-        - `TVOS` | 机顶盒苹果tvOS
-        - `PlayStation` | 主机索尼PlayStation
-        - `Nintendo` | 掌机任天堂Switch
-        - `Xbox` | 主机微软Xbox
-        - `WindowsPhone` | 手机微软Windows Mobile
-        - `Unknown` | 未知系统
+        - `Android` | Google Android for mobile phones
+        - `iOS` | Apple iOS for mobile phones/iPadOS for tablets
+        - `OSX` | Apple macOS for computers
+        - `Amazon` | Amazon FireOS for tablets/TVs
+        - `GearVR` | Samsung GearVR for headsets
+        - `Hololens` | Microsoft HoloLens for headsets
+        - `Windows10` | Microsoft Windows for computers
+        - `Win32` | Microsoft Win32 for computers (Education Edition?)
+        - `TVOS` | Apple tvOS for set-top boxes
+        - `PlayStation` | Sony PlayStation for consoles
+        - `Nintendo` | Nintendo Switch for handheld consoles
+        - `Xbox` | Microsoft Xbox for consoles
+        - `WindowsPhone` | Microsoft Windows Mobile for mobile phones
+        - `Unknown` | Unknown system
         """
+
     @property
     def inputMode(self) -> int:
         """
-        玩家的操作模式
+        Player's input mode
 
-        - 1. 鼠标 (`Mouse`)
-        - 2. 触控 (`Touch`)
-        - 3. 手柄 (`GamePad`)
-        - 4. 动作控制器 (`MotionController`)
+        - 1. Mouse (`Mouse`)
+        - 2. Touch (`Touch`)
+        - 3. Gamepad (`GamePad`)
+        - 4. Motion Controller (`MotionController`)
         """
+
     @property
     def playMode(self) -> int:
         """
-        玩家的游玩模式
+        Player's play mode
 
-        （由 GPT-3.5 翻译）
+        (Translated by GPT-3.5)
 
-        - 0. 普通模式 (`Normal`)
-        - 1. 引导模式 (`Teaser`)
-        - 2. 屏幕模式 (`Screen`)
-        - 3. 查看模式 (`Viewer`)
-        - 4. 虚拟现实模式 (`VR`)
-        - 5. 布置模式 (`Placement`)
-        - 6. 客厅模式 (`LivingRoom`)
-        - 7. 退出关卡 (`ExitLevel`)
-        - 8. 退出关卡客厅 (`ExitLevelLivingRoom`)
+        - 0. Normal mode (`Normal`)
+        - 1. Teaser mode (`Teaser`)
+        - 2. Screen mode (`Screen`)
+        - 3. Viewer mode (`Viewer`)
+        - 4. VR mode (`VR`)
+        - 5. Placement mode (`Placement`)
+        - 6. Living room mode (`LivingRoom`)
+        - 7. Exit level mode (`ExitLevel`)
+        - 8. Exit level living room mode (`ExitLevelLivingRoom`)
         """
+
     @property
     def serverAddress(self) -> str:
-        """玩家连接的地址"""
+        """Address to which the player is connected"""
+
     @property
     def clientId(self) -> str:
-        """玩家客户端的识别码 ID"""
+        """Identification code ID of the player's client"""
+
 
 Device = LLSE_Device

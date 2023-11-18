@@ -4,11 +4,11 @@ from llpy.types import T_ToJsonDict
 
 
 class T_PermInfo(TypedDict):
-    """权限信息"""
+    """Permission Information"""
 
     name: str
-    """权限名称"""
+    """Permission name"""
     enabled: bool
-    """是否启用"""
+    """Whether it is enabled"""
     extra: T_ToJsonDict | None
-    """额外数据"""
+    """Additional data"""

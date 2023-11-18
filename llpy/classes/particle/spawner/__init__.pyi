@@ -5,184 +5,199 @@ from llpy.types import T_Number, T_PosType
 
 from ..types import T_ParticleColor, T_ParticleNumber, T_ParticleSize, T_PosDirection
 
+
 class ParticleSpawner:
-    """粒子生成器对象"""
+    """Particle Spawner Object"""
 
     def __init__(
-        self,
-        display_radius: int,
-        high_detail: bool,
-        double_side: bool,
+            self,
+            display_radius: int,
+            high_detail: bool,
+            double_side: bool,
     ) -> None:
         """
-        生成一个粒子生成器对象
+        Generate a particle spawner object
 
         Args:
-            display_radius: 粒子显示半径
-            high_detail: 需要高细节线条
-            double_side: 需要双面粒子
+            display_radius: Particle display radius
+            high_detail: Requires high-detail lines
+            double_side: Requires double-sided particles
         """
+
     @property
     def displayRadius(self) -> int:
-        """粒子显示半径"""
+        """Particle display radius"""
+
     @property
-    def highDetial(self) -> bool:
-        """需要高细节线条"""
+    def highDetail(self) -> bool:
+        """Requires high-detail lines"""
+
     @property
     def doubleSide(self) -> bool:
-        """需要双面粒子"""
+        """Requires double-sided particles"""
+
     @displayRadius.setter
     def displayRadius(self, val: int): ...
-    @highDetial.setter
-    def highDetial(self, val: bool): ...
+
+    @highDetail.setter
+    def highDetail(self, val: bool): ...
+
     @doubleSide.setter
     def doubleSide(self, val: bool): ...
+
     def spawnParticle(self, pos: T_PosType, name: str) -> Literal[True]:
         """
-        生成指定名称粒子
+        Generate a particle with the specified name
 
         Args:
-            pos: 可以是浮点坐标或者整数坐标, 整数坐标会取方块中心点位置
-            name: 粒子名称
+            pos: Can be floating-point or integer coordinates. Integer coordinates will take the center point of the block.
+            name: Particle name
 
         Returns:
             `True`
         """
+
     def drawPoint(
-        self,
-        pos: T_PosType,
-        point_size: T_ParticleSize = 4,
-        color: T_ParticleColor = ParticleColor.White,
+            self,
+            pos: T_PosType,
+            point_size: T_ParticleSize = 4,
+            color: T_ParticleColor = ParticleColor.White,
     ) -> Literal[True]:
         """
-        生成点粒子
+        Generate a point particle
 
         Args:
-            pos: 可以是浮点坐标或者整数坐标, 整数坐标会取方块中心点位置
-            point_size: 粒子大小
-            color: 粒子颜色。应当使用 `ParticleColor` 枚举填充
+            pos: Can be floating-point or integer coordinates. Integer coordinates will take the center point of the block.
+            point_size: Particle size
+            color: Particle color. Should use the `ParticleColor` enum for filling.
 
         Returns:
             `True`
         """
+
     def drawNumber(
-        self,
-        pos: T_PosType,
-        num: T_ParticleNumber,
-        color: T_ParticleColor = ParticleColor.White,
+            self,
+            pos: T_PosType,
+            num: T_ParticleNumber,
+            color: T_ParticleColor = ParticleColor.White,
     ) -> Literal[True]:
         """
-        生成数字粒子
+        Generate a number particle
 
         Args:
-            pos: 可以是浮点坐标或者整数坐标, 整数坐标会取方块中心点位置
-            num: 粒子内容
-            color: 粒子颜色。应当使用 `ParticleColor` 枚举填充
+            pos: Can be floating-point or integer coordinates. Integer coordinates will take the center point of the block.
+            num: Particle content
+            color: Particle color. Should use the `ParticleColor` enum for filling.
 
         Returns:
             `True`
         """
+
     def drawAxialLine(
-        self,
-        pos: T_PosType,
-        direction: T_PosDirection,
-        length: T_Number,
-        color: T_ParticleColor = ParticleColor.White,
+            self,
+            pos: T_PosType,
+            direction: T_PosDirection,
+            length: T_Number,
+            color: T_ParticleColor = ParticleColor.White,
     ) -> Literal[True]:
         """
-        生成轴向线段
+        Generate an axial line segment
 
         Args:
-            pos: 线段起点。可以是浮点坐标或者整数坐标, 整数坐标会取方块中心点位置
-            direction: 线段方向。应当使用 `Direction` 枚举填充
-            length: 线段长度
-            color: 粒子颜色。应当使用 `ParticleColor` 枚举填充
+            pos: Starting point of the line segment. Can be floating-point or integer coordinates. Integer coordinates will take the center point of the block.
+            direction: Line segment direction. Should use the `Direction` enum for filling.
+            length: Line segment length
+            color: Particle color. Should use the `ParticleColor` enum for filling.
 
         Returns:
             `True`
         """
+
     def drawOrientedLine(
-        self,
-        start: T_PosType,
-        end: T_PosType,
-        line_width: T_ParticleSize = 4,
-        min_spacing: T_Number = 1,
-        max_particles_num: int = 64,
-        color: T_ParticleColor = ParticleColor.White,
+            self,
+            start: T_PosType,
+            end: T_PosType,
+            line_width: T_ParticleSize = 4,
+            min_spacing: T_Number = 1,
+            max_particles_num: int = 64,
+            color: T_ParticleColor = ParticleColor.White,
     ) -> Literal[True]:
         """
-        生成有向线段
+        Generate an oriented line segment
 
         Args:
-            start: 线段起点。可以是浮点坐标或者整数坐标, 整数坐标会取方块中心点位置
-            end: 线段终点。可以是浮点坐标或者整数坐标, 整数坐标会取方块中心点位置
-            line_width: 线段宽度
-            min_spacing: 线段点最小间隔
-            max_particles_num: 线段最大粒子数，达到后会自动增加间隔
-            color: 粒子颜色。应当使用 `ParticleColor` 枚举填充
+            start: Starting point of the line segment. Can be floating-point or integer coordinates. Integer coordinates will take the center point of the block.
+            end: End point of the line segment. Can be floating-point or integer coordinates. Integer coordinates will take the center point of the block.
+            line_width: Line segment width
+            min_spacing: Minimum spacing between line segment points
+            max_particles_num: Maximum number of particles in the line segment. It will automatically increase the spacing after reaching this number.
+            color: Particle color. Should use the `ParticleColor` enum for filling.
 
         Returns:
             `True`
         """
+
     @overload
     def drawCuboid(
-        self,
-        pos: T_PosType,
-        color: T_ParticleColor = ParticleColor.White,
+            self,
+            pos: T_PosType,
+            color: T_ParticleColor = ParticleColor.White,
     ) -> Literal[True]:
         """
-        生成立方体
+        Generate a cuboid
 
-        画出 1×1×1 大小的立方体
+        Draw a 1×1×1 size cuboid
 
         Args:
-            pos: 可以是浮点坐标或者整数坐标, 整数坐标会取方块角落底部位置
-            color: 粒子颜色。应当使用 `ParticleColor` 枚举填充
+            pos: Can be floating-point or integer coordinates. Integer coordinates will take the bottom corner position of the block.
+            color: Particle color. Should use the `ParticleColor` enum for filling.
 
         Returns:
             `True`
         """
+
     @overload
     def drawCuboid(
-        self,
-        pos: T_PosType,
-        pos2: T_PosType,
-        color: T_ParticleColor = ParticleColor.White,
+            self,
+            pos: T_PosType,
+            pos2: T_PosType,
+            color: T_ParticleColor = ParticleColor.White,
     ) -> Literal[True]:
         """
-        生成立方体
+        Generate a cuboid
 
-        画出从最小角落 `pos` 到最大角落 `pos2` 的立方体
+        Draw a cuboid from the minimum corner `pos` to the maximum corner `pos2`
 
         Args:
-            pos: 可以是浮点坐标或者整数坐标, 整数坐标会取方块角落底部位置
-            pos2: 可以是浮点坐标或者整数坐标, 整数坐标会取方块角落顶端位置
-            color: 粒子颜色。应当使用 `ParticleColor` 枚举填充
+            pos: Can be floating-point or integer coordinates. Integer coordinates will take the bottom corner position of the block.
+            pos2: Can be floating-point or integer coordinates. Integer coordinates will take the top corner position of the block.
+            color: Particle color. Should use the `ParticleColor` enum for filling.
 
         Returns:
             `True`
         """
+
     def drawCircle(
-        self,
-        pos: T_PosType,
-        facing: T_PosDirection,
-        radius: T_Number,
-        line_width: T_ParticleSize = 4,
-        min_spacing: T_Number = 1,
-        max_particles_num: int = 64,
-        color: T_ParticleColor = ParticleColor.White,
+            self,
+            pos: T_PosType,
+            facing: T_PosDirection,
+            radius: T_Number,
+            line_width: T_ParticleSize = 4,
+            min_spacing: T_Number = 1,
+            max_particles_num: int = 64,
+            color: T_ParticleColor = ParticleColor.White,
     ) -> Literal[True]:
         """
-        生成圆
+        Generate a circle
 
         Args:
-            pos: 圆心。可以是浮点坐标或者整数坐标, 整数坐标会取方块中心点位置
-            facing: 朝向。应当使用 `Direction` 枚举填充
-            radius: 半径
-            line_width: 圆线段宽度
-            min_spacing: 圆线段点最小间隔
-            max_particles_num: 圆最大粒子数，达到后会自动增加间隔
-            color: 粒子颜色。应当使用 `ParticleColor` 枚举填充
+            pos: Center of the circle. Can be floating-point or integer coordinates. Integer coordinates will take the center point of the block.
+            facing: Facing direction. Should use the `Direction` enum for filling.
+            radius: Radius
+            line_width: Width of the circular line segment
+            min_spacing: Minimum spacing between circular line segment points
+            max_particles_num: Maximum number of particles in the circle. It will automatically increase the spacing after reaching this number.
+            color: Particle color. Should use the `ParticleColor` enum for filling.
 
         Returns:
             `True`

@@ -17,4 +17,4 @@ T_LogColorName = Literal[
     "white",
     "grey",
 ]
-"""`colorLog` 可传入的颜色名称"""
+"""`colorLog` Color names that can be passed in"""

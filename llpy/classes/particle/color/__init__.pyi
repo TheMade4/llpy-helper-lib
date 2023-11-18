@@ -20,39 +20,39 @@ from ..types import (
 )
 
 class ParticleColor:
-    """粒子生成器颜色枚举"""
+    """Particle Spawner Color Enumeration"""
 
     def __init__(self) -> NoReturn: ...
 
     Black: T_ParticleColorBlack
-    """粒子颜色枚举 | 黑色"""
+    """Particle color enumeration | Black"""
     Indigo: T_ParticleColorIndigo
-    """粒子颜色枚举 | 靛蓝"""
+    """Particle color enumeration | Indigo"""
     Lavender: T_ParticleColorLavender
-    """粒子颜色枚举 | 薰衣草紫"""
+    """Particle color enumeration | Lavender"""
     Teal: T_ParticleColorTeal
-    """粒子颜色枚举 | 青色"""
+    """Particle color enumeration | Teal"""
     Cocoa: T_ParticleColorCocoa
-    """粒子颜色枚举 | 可可棕"""
+    """Particle color enumeration | Cocoa"""
     Dark: T_ParticleColorDark
-    """粒子颜色枚举 | 黑色"""
+    """Particle color enumeration | Dark"""
     Oatmeal: T_ParticleColorOatmeal
-    """粒子颜色枚举 | 燕麦色"""
+    """Particle color enumeration | Oatmeal"""
     White: T_ParticleColorWhite
-    """粒子颜色枚举 | 白色"""
+    """Particle color enumeration | White"""
     Red: T_ParticleColorRed
-    """粒子颜色枚举 | 红色"""
+    """Particle color enumeration | Red"""
     Apricot: T_ParticleColorApricot
-    """粒子颜色枚举 | 杏色"""
+    """Particle color enumeration | Apricot"""
     Yellow: T_ParticleColorYellow
-    """粒子颜色枚举 | 黄色"""
+    """Particle color enumeration | Yellow"""
     Green: T_ParticleColorGreen
-    """粒子颜色枚举 | 绿色"""
+    """Particle color enumeration | Green"""
     Vatblue: T_ParticleColorVatblue
-    """粒子颜色枚举 | 深蓝"""
+    """Particle color enumeration | Vatblue"""
     Slate: T_ParticleColorSlate
-    """粒子颜色枚举 | 石板灰"""
+    """Particle color enumeration | Slate"""
     Pink: T_ParticleColorPink
-    """粒子颜色枚举 | 粉色"""
+    """Particle color enumeration | Pink"""
     Fawn: T_ParticleColorFawn
-    """粒子颜色枚举 | 鹿褐色"""
+    """Particle color enumeration | Fawn"""
